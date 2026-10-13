@@ -429,7 +429,7 @@
             <th>Stock</th>
             <th>Qty</th>
             <th>Price (FCFA)</th>
-            <th>Bonanjo</th>
+            <th>On site</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -799,7 +799,7 @@
       img.className = 'thumb-img';
       img.alt = '';
       const ts = photoTsMap.get(item.id) || '0';
-      img.src = '../img/' + encodeURIComponent(item.id) + '.jpg?t=' + ts;
+      img.src = '../img/' + encodeURIComponent(item.id) + (item.photo ? '.jpg' : '.webp') + '?t=' + ts;
       img.onerror = () => {
         img.style.display = 'none';
         placeholder.style.display = 'block';
@@ -918,15 +918,15 @@
       tdPrice.appendChild(inputPrice);
       tr.appendChild(tdPrice);
 
-      // Col 6: Bonanjo
+      // Col 6: on site
       const tdBon = document.createElement('td');
-      tdBon.setAttribute('data-label', 'Bonanjo');
+      tdBon.setAttribute('data-label', 'On site');
 
       const chkBon = document.createElement('input');
       chkBon.type = 'checkbox';
       chkBon.className = 'checkbox-bon';
       chkBon.checked = Boolean(item.bon);
-      chkBon.setAttribute('aria-label', 'Held in Bonanjo for ' + item.id);
+      chkBon.setAttribute('aria-label', 'Available on site for ' + item.id);
       chkBon.onchange = () => {
         item.bon = chkBon.checked;
         updateRowChangedState(item, tr);

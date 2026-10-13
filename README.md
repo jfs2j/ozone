@@ -1,6 +1,6 @@
 # OZone Store (syllexdeals.com)
 
-Bilingual (French/English) catalog of brand-new, sealed items in Bonanjo, Douala.
+Bilingual (French/English) catalog of brand-new, sealed items available locally.
 Public, read-only static website hosted on GitHub Pages with no build step.
 
 ## GitHub Pages Configuration
@@ -18,9 +18,9 @@ The site is served directly from the `/docs` folder:
    - Update product details, prices (in FCFA), or stock status directly in `docs/items.json`.
    - The store fetches and renders from `docs/items.json` on every page visit.
 
-2. **Photos (`docs/img/OZ-xxx.jpg`)**:
-   - Each photo corresponds to an item ID (e.g. `OZ-001.jpg`, `OZ-002.jpg`).
-   - Photos are 4:3 JPEG format.
+2. **Photos (`docs/img/`)**: illustrations are `OZ-xxx.webp`; real photos uploaded from the admin are `OZ-xxx.jpg` and switch on when the item's `photo` flag is true.
+   - Each photo corresponds to an item ID (e.g. `OZ-001.webp`).
+   - Photos are 4:3 (640x480).
 
 ## Helper Tools (`tools/`)
 

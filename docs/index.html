@@ -1,1545 +1,322 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>OZone Store | Neuf sous emballage à Bonanjo</title>
-  <meta name="description" content="Catalogue de produits neufs, scellés d'origine disponibles à Bonanjo, Douala. Chauffe-eau, plaques de cuisson, pompes, solaire, serrures connectées.">
-  <meta property="og:title" content="OZone Store">
-  <meta property="og:description" content="Produits neufs, scellés sous emballage à Bonanjo, Douala. Disponibilité à confirmer sur WhatsApp.">
-  <meta property="og:type" content="website">
-  <meta name="theme-color" content="#0f172a">
-  <style>
-    :root {
-      --bg: #f8fafc;
-      --surface: #ffffff;
-      --surface-subtle: #f1f5f9;
-      --ink: #0f172a;
-      --ink-muted: #64748b;
-      --ink-subtle: #94a3b8;
-      --line: #e2e8f0;
-      --line-subtle: #f1f5f9;
-      --primary: #2563eb;
-      --primary-hover: #1d4ed8;
-      --primary-tint: #eff6ff;
-      --wa: #128c7e;
-      --wa-hover: #075e54;
-      --ok: #059669;
-      --ok-tint: #ecfdf5;
-      --bad: #dc2626;
-      --bad-tint: #fef2f2;
-      --radius-sm: 8px;
-      --radius-md: 12px;
-      --radius-lg: 16px;
-      --radius-pill: 9999px;
-      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
-      --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.07), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
-      --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      :root:not([data-theme="light"]) {
-        --bg: #090d16;
-        --surface: #111827;
-        --surface-subtle: #1f2937;
-        --ink: #f8fafc;
-        --ink-muted: #94a3b8;
-        --ink-subtle: #64748b;
-        --line: #1e293b;
-        --line-subtle: #172033;
-        --primary: #3b82f6;
-        --primary-hover: #60a5fa;
-        --primary-tint: #1e293b;
-        --ok: #10b981;
-        --ok-tint: #064e3b;
-        --bad: #f87171;
-        --bad-tint: #450a0a;
-        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
-        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
-        color-scheme: dark;
-      }
-    }
-
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      background-color: var(--bg);
-      color: var(--ink);
-      font-family: var(--font-body);
-      font-size: 15px;
-      line-height: 1.45;
-      -webkit-font-smoothing: antialiased;
-      padding-bottom: 48px;
-    }
-
-    .wrap {
-      max-width: 1200px;
-      margin-left: auto;
-      margin-right: auto;
-      padding-left: 12px;
-      padding-right: 12px;
-    }
-
-    @media (min-width: 640px) {
-      .wrap {
-        padding-left: 16px;
-        padding-right: 16px;
-      }
-    }
-
-    /* Top Brand Header */
-    header.top {
-      padding-top: 10px;
-      padding-bottom: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-    }
-
-    @media (min-width: 640px) {
-      header.top {
-        padding-top: 16px;
-        padding-bottom: 12px;
-      }
-    }
-
-    .brand-block {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      min-width: 0;
-    }
-
-    @media (min-width: 640px) {
-      .brand-block {
-        gap: 12px;
-      }
-    }
-
-    .logo-badge {
-      width: 32px;
-      height: 32px;
-      border-radius: var(--radius-sm);
-      background: linear-gradient(135deg, #1e3a8a, #2563eb);
-      display: grid;
-      place-items: center;
-      color: #ffffff;
-      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.35);
-      flex-shrink: 0;
-    }
-
-    @media (min-width: 640px) {
-      .logo-badge {
-        width: 40px;
-        height: 40px;
-        border-radius: var(--radius-md);
-      }
-    }
-
-    .logo-badge svg {
-      width: 18px;
-      height: 18px;
-      stroke: currentColor;
-      fill: none;
-      stroke-width: 2.2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    @media (min-width: 640px) {
-      .logo-badge svg {
-        width: 22px;
-        height: 22px;
-      }
-    }
-
-    .brand-text h1 {
-      font-size: 1.25rem;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      line-height: 1.1;
-      color: var(--ink);
-    }
-
-    @media (min-width: 640px) {
-      .brand-text h1 {
-        font-size: 1.65rem;
-      }
-    }
-
-    .brand-text h1 span {
-      color: var(--primary);
-    }
-
-    .brand-text .sub {
-      display: none;
-      color: var(--ink-muted);
-      font-size: 0.82rem;
-      margin-top: 2px;
-      max-width: 58ch;
-      line-height: 1.35;
-    }
-
-    @media (min-width: 640px) {
-      .brand-text .sub {
-        display: block;
-      }
-    }
-
-    /* Header Actions: Language & WhatsApp */
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      flex-shrink: 0;
-    }
-
-    @media (min-width: 640px) {
-      .header-actions {
-        gap: 10px;
-      }
-    }
-
-    .lang-switcher {
-      display: inline-flex;
-      background: var(--surface-subtle);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-sm);
-      padding: 2px;
-    }
-
-    .lang-switcher button {
-      border: none;
-      background: transparent;
-      color: var(--ink-muted);
-      font-family: inherit;
-      font-size: 0.74rem;
-      font-weight: 700;
-      padding: 4px 8px;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: all 0.15s ease;
-    }
-
-    @media (min-width: 640px) {
-      .lang-switcher button {
-        font-size: 0.78rem;
-        padding: 5px 10px;
-      }
-    }
-
-    .lang-switcher button[aria-pressed="true"] {
-      background: var(--surface);
-      color: var(--ink);
-      box-shadow: var(--shadow-sm);
-    }
-
-    .btn-wa-header {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      background: #128c7e;
-      color: #ffffff;
-      font-size: 0.76rem;
-      font-weight: 600;
-      padding: 6px 10px;
-      border-radius: var(--radius-sm);
-      text-decoration: none;
-      transition: background 0.15s ease;
-      white-space: nowrap;
-    }
-
-    @media (min-width: 640px) {
-      .btn-wa-header {
-        font-size: 0.82rem;
-        padding: 7px 13px;
-        gap: 6px;
-      }
-    }
-
-    .btn-wa-header:hover {
-      background: #075e54;
-    }
-
-    /* Trust & Info Strip - Compact Single Line on Mobile */
-    .trust-strip {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-sm);
-      padding: 6px 10px;
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-      font-size: 0.76rem;
-      box-shadow: var(--shadow-sm);
-      overflow-x: auto;
-      white-space: nowrap;
-      scrollbar-width: none;
-    }
-
-    .trust-strip::-webkit-scrollbar {
-      display: none;
-    }
-
-    @media (min-width: 640px) {
-      .trust-strip {
-        border-radius: var(--radius-md);
-        padding: 8px 14px;
-        margin-bottom: 12px;
-        font-size: 0.82rem;
-        flex-wrap: wrap;
-        white-space: normal;
-      }
-    }
-
-    .trust-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      color: var(--ink-muted);
-      flex-shrink: 0;
-    }
-
-    .trust-item strong, .trust-item b {
-      color: var(--ink);
-      font-weight: 600;
-    }
-
-    .trust-icon {
-      width: 14px;
-      height: 14px;
-      color: var(--primary);
-      flex-shrink: 0;
-    }
-
-    @media (min-width: 640px) {
-      .trust-icon {
-        width: 16px;
-        height: 16px;
-      }
-    }
-
-    .trust-divider {
-      color: var(--ink-subtle);
-      opacity: 0.5;
-      user-select: none;
-    }
-
-    /* Sticky Navigation & Filter Bar */
-    .sticky-bar {
-      position: sticky;
-      top: env(safe-area-inset-top, 0px);
-      z-index: 20;
-      background: var(--bg);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      padding-top: 4px;
-      padding-bottom: 6px;
-      border-bottom: 1px solid var(--line);
-      margin-bottom: 8px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    @media (min-width: 640px) {
-      .sticky-bar {
-        padding-top: 8px;
-        padding-bottom: 10px;
-        margin-bottom: 12px;
-        gap: 8px;
-      }
-    }
-
-    /* Row 1: Search and Sort side-by-side */
-    .search-sort-row {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      width: 100%;
-    }
-
-    @media (min-width: 640px) {
-      .search-sort-row {
-        gap: 10px;
-      }
-    }
-
-    .search-wrap {
-      position: relative;
-      flex: 1 1 auto;
-      min-width: 0;
-      display: flex;
-      align-items: center;
-    }
-
-    .search-icon {
-      position: absolute;
-      left: 9px;
-      width: 14px;
-      height: 14px;
-      color: var(--ink-subtle);
-      pointer-events: none;
-    }
-
-    .search-input {
-      width: 100%;
-      height: 36px;
-      padding: 6px 26px 6px 28px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-sm);
-      background: var(--surface);
-      color: var(--ink);
-      font-family: inherit;
-      font-size: 0.84rem;
-      outline: none;
-      transition: border-color 0.15s, box-shadow 0.15s;
-    }
-
-    @media (min-width: 640px) {
-      .search-input {
-        height: 38px;
-        padding: 8px 30px 8px 32px;
-        font-size: 0.88rem;
-      }
-    }
-
-    .search-input:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
-    }
-
-    .search-clear {
-      position: absolute;
-      right: 7px;
-      border: none;
-      background: var(--surface-subtle);
-      color: var(--ink-muted);
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      cursor: pointer;
-      font-size: 11px;
-      line-height: 1;
-    }
-
-    .sort-select {
-      height: 36px;
-      padding: 0 8px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-sm);
-      background: var(--surface);
-      color: var(--ink);
-      font-family: inherit;
-      font-size: 0.78rem;
-      outline: none;
-      cursor: pointer;
-      flex: 0 0 120px;
-      max-width: 42%;
-    }
-
-    @media (min-width: 640px) {
-      .sort-select {
-        height: 38px;
-        font-size: 0.84rem;
-        flex: 0 0 180px;
-        max-width: none;
-        padding: 0 10px;
-      }
-    }
-
-    /* Row 2: In-stock and Bonanjo-only toggles */
-    .filter-toggles-row {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 0.75rem;
-      color: var(--ink-muted);
-      padding: 0 2px;
-    }
-
-    @media (min-width: 640px) {
-      .filter-toggles-row {
-        font-size: 0.8rem;
-        gap: 16px;
-      }
-    }
-
-    .toggle-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    .toggle-label input[type="checkbox"] {
-      width: 13px;
-      height: 13px;
-      accent-color: var(--primary);
-      cursor: pointer;
-    }
-
-    /* Row 3: Category Chips on one horizontally scrollable row */
-    .category-chips {
-      display: flex;
-      overflow-x: auto;
-      white-space: nowrap;
-      gap: 5px;
-      padding-top: 2px;
-      padding-bottom: 3px;
-      scrollbar-width: none;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    .category-chips::-webkit-scrollbar {
-      display: none;
-    }
-
-    .chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      padding: 4px 9px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-pill);
-      background: var(--surface);
-      color: var(--ink-muted);
-      font-family: inherit;
-      font-size: 0.73rem;
-      font-weight: 500;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: all 0.15s ease;
-      flex-shrink: 0;
-    }
-
-    @media (min-width: 640px) {
-      .chip {
-        font-size: 0.78rem;
-        padding: 5px 11px;
-        gap: 6px;
-      }
-    }
-
-    .chip:hover {
-      border-color: var(--ink-subtle);
-      background: var(--surface-subtle);
-    }
-
-    .chip[aria-pressed="true"] {
-      background: var(--primary);
-      border-color: var(--primary);
-      color: #ffffff;
-      font-weight: 600;
-      box-shadow: 0 2px 5px rgba(37, 99, 235, 0.25);
-    }
-
-    .chip .chip-count {
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      padding: 1px 5px;
-      border-radius: var(--radius-pill);
-      background: rgba(15, 23, 42, 0.08);
-    }
-
-    .chip[aria-pressed="true"] .chip-count {
-      background: rgba(255, 255, 255, 0.25);
-      color: #ffffff;
-    }
-
-    /* Status hint & count bar */
-    .status-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 8px;
-      font-size: 0.75rem;
-      color: var(--ink-muted);
-      padding: 0 2px;
-    }
-
-    @media (min-width: 640px) {
-      .status-bar {
-        font-size: 0.82rem;
-        margin-bottom: 12px;
-      }
-    }
-
-    .status-bar strong {
-      color: var(--ink);
-    }
-
-    /* Product Grid: Strict 2 columns on phones */
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 8px;
-    }
-
-    @media (min-width: 640px) {
-      .product-grid {
-        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-        gap: 16px;
-      }
-    }
-
-    @media (min-width: 1024px) {
-      .product-grid {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 18px;
-      }
-    }
-
-    /* Product Card */
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-sm);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      box-shadow: var(--shadow-sm);
-      position: relative;
-    }
-
-    @media (min-width: 640px) {
-      .card {
-        border-radius: var(--radius-md);
-        transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
-      }
-      .card:hover {
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-md);
-      }
-    }
-
-    .card.out {
-      opacity: 0.7;
-    }
-
-    .card.out .photo-box img {
-      filter: grayscale(1);
-      opacity: 0.55;
-    }
-
-    /* Photo Box with 4:3 Aspect Ratio and Layout-Shift Prevention */
-    .photo-box {
-      position: relative;
-      aspect-ratio: 4 / 3;
-      width: 100%;
-      background: var(--surface-subtle);
-      overflow: hidden;
-      display: grid;
-      place-items: center;
-      border-bottom: 1px solid var(--line-subtle);
-    }
-
-    .photo-box img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .photo-placeholder {
-      font-weight: 800;
-      font-size: 1.5rem;
-      color: var(--primary);
-      opacity: 0.3;
-      text-transform: uppercase;
-      user-select: none;
-    }
-
-    @media (min-width: 640px) {
-      .photo-placeholder {
-        font-size: 2rem;
-      }
-    }
-
-    /* Illustrative Image Caption */
-    .photo-cap {
-      position: absolute;
-      right: 5px;
-      bottom: 5px;
-      background: rgba(15, 23, 42, 0.78);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-      color: #ffffff;
-      font-size: 0.58rem;
-      font-weight: 500;
-      padding: 2px 5px;
-      border-radius: 3px;
-      pointer-events: none;
-      z-index: 2;
-    }
-
-    @media (min-width: 640px) {
-      .photo-cap {
-        right: 8px;
-        bottom: 8px;
-        font-size: 0.64rem;
-        padding: 2.5px 7px;
-        border-radius: 4px;
-      }
-    }
-
-    /* Badges */
-    .badge-rack {
-      position: absolute;
-      left: 5px;
-      top: 5px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 3px;
-      z-index: 2;
-    }
-
-    @media (min-width: 640px) {
-      .badge-rack {
-        left: 8px;
-        top: 8px;
-        gap: 4px;
-      }
-    }
-
-    .badge {
-      font-size: 0.62rem;
-      font-weight: 700;
-      padding: 2px 5px;
-      border-radius: 3px;
-      line-height: 1.15;
-    }
-
-    @media (min-width: 640px) {
-      .badge {
-        font-size: 0.68rem;
-        padding: 2.5px 6px;
-        border-radius: 4px;
-      }
-    }
-
-    .badge-bon {
-      background: #0f172a;
-      color: #ffffff;
-    }
-
-    .badge-qty {
-      background: var(--ok-tint);
-      color: var(--ok);
-      border: 1px solid rgba(5, 150, 105, 0.3);
-    }
-
-    .badge-out {
-      background: var(--bad);
-      color: #ffffff;
-    }
-
-    /* Card Body */
-    .card-body {
-      padding: 8px;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      flex: 1;
-    }
-
-    @media (min-width: 640px) {
-      .card-body {
-        padding: 12px;
-        gap: 6px;
-      }
-    }
-
-    .card-meta {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 4px;
-    }
-
-    .card-cat {
-      font-size: 0.62rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--ink-muted);
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-    @media (min-width: 640px) {
-      .card-cat {
-        font-size: 0.66rem;
-      }
-    }
-
-    .card-sku {
-      font-family: var(--font-mono);
-      font-size: 0.62rem;
-      font-weight: 600;
-      color: var(--ink-subtle);
-      background: var(--surface-subtle);
-      padding: 1px 4px;
-      border-radius: 3px;
-      flex-shrink: 0;
-    }
-
-    .card-title {
-      font-size: 0.82rem;
-      font-weight: 700;
-      line-height: 1.25;
-      color: var(--ink);
-      overflow-wrap: anywhere;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-
-    @media (min-width: 640px) {
-      .card-title {
-        font-size: 0.95rem;
-        line-height: 1.3;
-      }
-    }
-
-    .card-desc {
-      font-size: 0.72rem;
-      color: var(--ink-muted);
-      line-height: 1.3;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-
-    @media (min-width: 640px) {
-      .card-desc {
-        font-size: 0.78rem;
-        line-height: 1.35;
-      }
-    }
-
-    /* Card Price */
-    .card-price-wrap {
-      margin-top: auto;
-      padding-top: 4px;
-    }
-
-    .card-price {
-      font-size: 0.95rem;
-      font-weight: 800;
-      font-variant-numeric: tabular-nums;
-      color: var(--ink);
-      letter-spacing: -0.01em;
-    }
-
-    @media (min-width: 640px) {
-      .card-price {
-        font-size: 1.1rem;
-      }
-    }
-
-    .card-price span {
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: var(--ink-muted);
-      margin-left: 2px;
-    }
-
-    .card-price.price-rq {
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--ink-muted);
-      font-style: italic;
-    }
-
-    /* WhatsApp Button */
-    .card-action {
-      padding-top: 6px;
-    }
-
-    .btn-wa {
-      width: 100%;
-      height: 32px;
-      border: none;
-      background: #128c7e;
-      color: #ffffff;
-      font-family: inherit;
-      font-size: 0.75rem;
-      font-weight: 600;
-      border-radius: var(--radius-sm);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 5px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background 0.15s ease;
-      white-space: nowrap;
-    }
-
-    @media (min-width: 640px) {
-      .btn-wa {
-        height: 36px;
-        font-size: 0.82rem;
-        gap: 6px;
-      }
-    }
-
-    .btn-wa:hover:not(:disabled) {
-      background: #075e54;
-    }
-
-    .btn-wa:disabled {
-      background: var(--surface-subtle);
-      color: var(--ink-subtle);
-      border: 1px solid var(--line);
-      cursor: not-allowed;
-    }
-
-    .btn-wa svg {
-      width: 14px;
-      height: 14px;
-      fill: currentColor;
-      flex-shrink: 0;
-    }
-
-    /* Empty State & Error Banner */
-    .empty-state {
-      padding: 40px 16px;
-      text-align: center;
-      background: var(--surface);
-      border: 1px dashed var(--line);
-      border-radius: var(--radius-md);
-      margin: 16px 0;
-      grid-column: 1 / -1;
-    }
-
-    .empty-state svg {
-      width: 40px;
-      height: 40px;
-      color: var(--ink-subtle);
-      margin-bottom: 8px;
-    }
-
-    .load-error-box {
-      padding: 24px 16px;
-      text-align: center;
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-md);
-      margin: 20px 0;
-    }
-
-    .load-error-box p {
-      font-size: 0.9rem;
-      color: var(--ink-muted);
-      margin-bottom: 12px;
-    }
-
-    /* Footer */
-    footer.catalog-foot {
-      margin-top: 36px;
-      padding-top: 18px;
-      border-top: 1px solid var(--line);
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      color: var(--ink-muted);
-      font-size: 0.78rem;
-    }
-
-    @media (min-width: 640px) {
-      footer.catalog-foot {
-        margin-top: 48px;
-        padding-top: 24px;
-        font-size: 0.82rem;
-      }
-    }
-
-    footer.catalog-foot a {
-      color: var(--primary);
-      text-decoration: none;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'">
+<title>OZone | Neuf, scellé, importé des États-Unis</title>
+<meta name="description" content="Produits neufs, scellés d'origine, importés des États-Unis et disponibles à Douala. Chauffe-eau, plaques de cuisson, pompes, solaire, serrures connectées. Commande sur WhatsApp.">
+<meta property="og:title" content="OZone, neuf et scellé, importé des États-Unis">
+<meta property="og:description" content="Cherchez, triez, puis écrivez-nous sur WhatsApp pour ce qui vous intéresse.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#24133a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M3 16 11 5h16a2 2 0 0 1 2 2v18a2 2 0 0 1-2 2H11Z' fill='%23f2b21b'/%3E%3Ccircle cx='11.5' cy='16' r='2.4' fill='%2324133a'/%3E%3C/svg%3E">
+<link rel="preload" href="sg.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:"Schibsted Grotesk";src:url(sg.woff2) format("woff2");font-weight:450 800;font-style:normal;font-display:swap}
+:root{
+  --paper:#f7f5fa;--card:#fff;--tint:#ece8f3;--ink:#24133a;--ink2:#5d5170;--ink3:#8b819b;
+  --line:#e3dded;--tag:#f2b21b;--tag-ink:#24133a;--cta:#24133a;--cta-ink:#fff;--cta-hover:#3a2358;
+  --ok:#2f6b4a;--bad:#a23b3b;--ring:#7a4fd0;
+  --r:14px;--font:"Schibsted Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root{
+  --paper:#150c24;--card:#20133a;--tint:#2b1c4a;--ink:#f3eefb;--ink2:#b9aed0;--ink3:#8a7fa3;
+  --line:#35275a;--cta:#f2b21b;--cta-ink:#24133a;--cta-hover:#ffc43d;--ok:#7fd1a2;--bad:#ff8f8f;--ring:#b79bff}}
+*{box-sizing:border-box;margin:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--paper);color:var(--ink);font:450 16px/1.45 var(--font);-webkit-font-smoothing:antialiased}
+button,input,select{font:inherit;color:inherit}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ring);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 16px}
+/* top bar */
+.bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0}
+.brand{display:flex;align-items:center;gap:9px;text-decoration:none}
+.brand svg{width:34px;height:34px;flex:none}
+.brand b{font-size:1.45rem;font-weight:800;letter-spacing:-.03em}
+.brand b i{font-style:normal;font-weight:500}
+.right{display:flex;align-items:center;gap:8px}
+.lang{display:flex;background:var(--tint);border-radius:999px;padding:3px}
+.lang button{border:0;background:none;padding:5px 11px;border-radius:999px;font-weight:700;font-size:.82rem;cursor:pointer;color:var(--ink2)}
+.lang button[aria-pressed=true]{background:var(--ink);color:var(--paper)}
+.wa-top{display:inline-flex;align-items:center;gap:7px;text-decoration:none;background:var(--cta);color:var(--cta-ink);padding:8px 14px;border-radius:999px;font-weight:700;font-size:.88rem}
+.wa-top:hover{background:var(--cta-hover)}
+.wa-top svg,.wa svg,.fab svg,.go svg{width:17px;height:17px;fill:currentColor;flex:none}
+/* intro */
+.intro{padding:18px 0 6px}
+.intro h1{font-size:clamp(1.9rem,5.4vw,3.1rem);line-height:1.02;font-weight:800;letter-spacing:-.04em;max-width:16ch}
+.intro p{margin-top:10px;color:var(--ink2);max-width:52ch}
+.facts{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:14px;font-size:.88rem;font-weight:600;color:var(--ink2)}
+.facts span{display:inline-flex;align-items:center;gap:6px}
+.facts svg{width:15px;height:15px;stroke:var(--ink);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+/* tools */
+.tools{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--paper) 94%,transparent);backdrop-filter:blur(8px);padding:10px 0 8px;margin-top:12px;border-bottom:1px solid var(--line)}
+.row{display:flex;gap:8px}
+.search{position:relative;flex:1;min-width:0}
+.search input{width:100%;height:44px;border:1.5px solid var(--line);background:var(--card);border-radius:12px;padding:0 38px 0 14px}
+.search input::placeholder{color:var(--ink3)}
+.search input:focus{border-color:var(--ink);outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--ring) 30%,transparent)}
+.x{position:absolute;right:6px;top:7px;width:30px;height:30px;border:0;background:none;font-size:1.3rem;cursor:pointer;color:var(--ink3)}
+.sort{height:44px;border:1.5px solid var(--line);background:var(--card);border-radius:12px;padding:0 8px;max-width:42%}
+.toggles{display:flex;gap:16px;margin-top:8px;font-size:.88rem;font-weight:600;color:var(--ink2)}
+.toggles label{display:flex;align-items:center;gap:7px;cursor:pointer}
+.toggles input{width:17px;height:17px;accent-color:var(--ink)}
+.chips{display:flex;gap:7px;overflow-x:auto;margin-top:9px;padding-bottom:2px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;border:1.5px solid var(--line);background:var(--card);border-radius:999px;padding:6px 13px;font-weight:650;font-size:.86rem;cursor:pointer;color:var(--ink2);white-space:nowrap}
+.chip small{font-size:.74rem;font-weight:600;margin-left:5px;color:var(--ink3)}
+.chip[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.chip[aria-pressed=true] small{color:var(--paper);opacity:.7}
+.meta{display:flex;justify-content:space-between;gap:12px;padding:14px 0 10px;font-size:.84rem;color:var(--ink2)}
+.meta strong{color:var(--ink)}
+/* grid */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding-bottom:96px}
+@media(min-width:700px){.grid{grid-template-columns:repeat(3,1fr);gap:16px}}
+@media(min-width:1000px){.grid{grid-template-columns:repeat(4,1fr)}}
+.card{position:relative;background:var(--card);border-radius:var(--r);overflow:hidden;border:1px solid var(--line);display:flex;flex-direction:column;cursor:pointer;text-align:left;padding:0;width:100%}
+.card:hover{border-color:var(--ink3)}
+.pic{position:relative;aspect-ratio:4/3;background:var(--tint)}
+.pic img{position:relative;width:100%;height:100%;object-fit:cover;display:block}
+.pic i{position:absolute;inset:0;display:grid;place-items:center;font:800 1.4rem var(--font);color:var(--ink3);font-style:normal}
+.tag{position:absolute;left:0;bottom:10px;background:var(--tag);color:var(--tag-ink);font-weight:800;font-size:1.02rem;letter-spacing:-.02em;padding:5px 12px 5px 20px;clip-path:polygon(0 50%,11px 0,100% 0,100% 100%,11px 100%);font-variant-numeric:tabular-nums;white-space:nowrap}
+.tag small{font-size:.68rem;font-weight:700;margin-left:3px;letter-spacing:0}
+.tag.rq{background:var(--card);color:var(--ink);font-size:.8rem;font-weight:700;box-shadow:inset 0 0 0 1.5px var(--ink)}
+.flag{position:absolute;top:8px;right:8px;background:var(--ink);color:var(--paper);font-size:.7rem;font-weight:700;padding:3px 8px;border-radius:999px}
+.body{padding:10px 12px 12px;display:flex;flex-direction:column;gap:3px;flex:1}
+.cat{font-size:.74rem;font-weight:650;color:var(--ink3)}
+.title{font-size:.95rem;font-weight:700;line-height:1.25;letter-spacing:-.01em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card.out .pic img{filter:grayscale(1) opacity(.55)}
+.card.out .title{color:var(--ink3)}
+.card.out .tag{background:var(--ink3);color:var(--paper)}
+.empty{text-align:center;padding:48px 0;color:var(--ink2)}
+.empty h3{color:var(--ink);font-size:1.1rem}
+.empty button{margin-top:12px;border:0;background:var(--cta);color:var(--cta-ink);padding:9px 16px;border-radius:999px;font-weight:700;cursor:pointer}
+.err{background:var(--card);border:1.5px solid var(--bad);border-radius:var(--r);padding:16px;margin:14px 0}
+/* floating whatsapp */
+.fab{position:fixed;right:16px;bottom:max(16px,env(safe-area-inset-bottom));z-index:6;display:inline-flex;align-items:center;gap:8px;background:var(--cta);color:var(--cta-ink);text-decoration:none;font-weight:800;padding:13px 18px;border-radius:999px;box-shadow:0 8px 24px rgba(36,19,58,.28)}
+.fab:hover{background:var(--cta-hover)}
+@media(max-width:699px){.fab{padding:14px}.fab span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.fab svg{width:24px;height:24px}}
+/* detail sheet */
+dialog{border:0;padding:0;background:var(--card);color:var(--ink);width:min(520px,100%);max-height:92vh;border-radius:20px 20px 0 0;margin:auto auto 0;overflow:auto}
+dialog::backdrop{background:rgba(21,12,36,.62)}
+@media(min-width:700px){dialog{border-radius:20px;margin:auto}}
+dialog[open]{animation:up .2s ease-out}
+@keyframes up{from{transform:translateY(24px);opacity:0}}
+@media(prefers-reduced-motion:reduce){dialog[open]{animation:none}}
+.dpic{position:relative;aspect-ratio:4/3;background:var(--tint)}
+.dpic img{width:100%;height:100%;object-fit:cover;display:block}
+.cap{position:absolute;left:10px;top:10px;background:rgba(36,19,58,.82);color:#fff;font-size:.72rem;font-weight:600;padding:3px 8px;border-radius:999px}
+.close{position:absolute;right:10px;top:10px;width:38px;height:38px;border-radius:50%;border:0;background:var(--card);color:var(--ink);font-size:1.4rem;cursor:pointer;line-height:1;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+.dbody{padding:16px 18px 20px}
+.dbody .cat{font-size:.8rem}
+.dbody h2{font-size:1.35rem;line-height:1.2;letter-spacing:-.02em;margin:3px 0 8px}
+.dprice{display:flex;align-items:center;gap:10px;margin:10px 0 12px;flex-wrap:wrap}
+.dprice .tag{position:static;font-size:1.3rem;padding:7px 16px 7px 24px}
+.stock{font-size:.84rem;font-weight:700;color:var(--ok)}
+.stock.no{color:var(--bad)}
+.dbody p{color:var(--ink2);max-width:60ch}
+.ref{font-size:.78rem;color:var(--ink3);margin-top:10px}
+.go{display:flex;align-items:center;justify-content:center;gap:9px;margin-top:16px;background:var(--cta);color:var(--cta-ink);text-decoration:none;font-weight:800;padding:14px;border-radius:12px}
+.go:hover{background:var(--cta-hover)}
+.go2{display:block;text-align:center;margin-top:8px;padding:11px;border-radius:12px;border:1.5px solid var(--line);font-weight:700;font-size:.92rem;text-decoration:none;color:var(--ink)}
+.go2:hover{border-color:var(--ink)}
+.go2[hidden]{display:none}
+.go.off{background:var(--tint);color:var(--ink3);pointer-events:none}
+.foot{padding:0 0 110px;font-size:.8rem;color:var(--ink3)}
+</style>
 </head>
 <body>
-  <div class="wrap">
-    <!-- Top Header -->
-    <header class="top">
-      <div class="brand-block">
-        <div class="logo-badge" title="OZone">
-          <svg viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="9"/>
-            <path d="M8.5 11.5c1.5 2.5 5.5 2.5 7 0"/>
-          </svg>
-        </div>
-        <div class="brand-text">
-          <h1>O<span>Zone</span></h1>
-          <p class="sub" id="header-sub">Produits neufs, sous emballage, disponibles à Bonanjo. Cherchez, triez, puis écrivez-nous pour ce qui vous intéresse.</p>
-        </div>
+<div class="wrap">
+  <header class="bar">
+    <a class="brand" href="./" aria-label="OZone">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 16 11 5h16a2 2 0 0 1 2 2v18a2 2 0 0 1-2 2H11Z" fill="#f2b21b"/><circle cx="11.5" cy="16" r="2.4" fill="#24133a"/></svg>
+      <b>OZ<i>one</i></b>
+    </a>
+    <div class="right">
+      <div class="lang" role="group" aria-label="Langue / Language">
+        <button type="button" id="l-fr" aria-pressed="true">FR</button>
+        <button type="button" id="l-en" aria-pressed="false">EN</button>
       </div>
-      
-      <div class="header-actions">
-        <div class="lang-switcher" role="group" aria-label="Language">
-          <button id="l-fr" aria-pressed="true" type="button">FR</button>
-          <button id="l-en" aria-pressed="false" type="button">EN</button>
-        </div>
-        <a class="btn-wa-header" href="https://wa.me/17572755446" target="_blank" rel="noopener noreferrer">
-          <svg style="width:13px;height:13px;fill:currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.698.067-2.001-.476-1.554-.648-2.552-2.227-2.629-2.33-.077-.104-.633-.843-.633-1.608 0-.766.4-.1.141.547-.145.147-.32.32-.472.48-.152.16-.312.18-.573.05-.26-.13-1.1-.405-2.096-1.292-.774-.69-1.297-1.543-1.449-1.803-.152-.26-.016-.401.114-.53.117-.117.26-.304.39-.456.13-.152.173-.26.26-.434.087-.174.043-.326-.022-.456-.065-.13-.586-1.413-.804-1.935-.212-.509-.427-.44-.586-.448h-.502c-.174 0-.456.065-.695.326-.239.26-.913.892-.913 2.174 0 1.282.934 2.521 1.064 2.695.13.174 1.838 2.807 4.453 3.935 2.615 1.128 2.615.752 3.084.708.469-.044 1.512-.619 1.727-1.217z"/></svg>
-          <span>WhatsApp</span>
-        </a>
-      </div>
-    </header>
-
-    <!-- Trust Banner - Compact Single Line -->
-    <div class="trust-strip">
-      <div class="trust-item">
-        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/>
-          <path d="m3.3 7 8.7 5 8.7-5"/>
-          <path d="M12 22V12"/>
-        </svg>
-        <span id="trust-note"><strong>Neuf & Scellé.</strong> Chaque article est non ouvert, dans son emballage d'origine.</span>
-      </div>
-      <span class="trust-divider">·</span>
-      <div class="trust-item">
-        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
-          <circle cx="12" cy="10" r="3"/>
-        </svg>
-        <span id="trust-loc"><strong>Bonanjo</strong>, Douala</span>
-      </div>
-      <span class="trust-divider">·</span>
-      <div class="trust-item">
-        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/>
-        </svg>
-        <span id="trust-guar">Neuf, non ouvert</span>
-      </div>
+      <a class="wa-top" id="wa-top" href="#" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3Zm0 2a7 7 0 1 1-3.6 13l-.3-.2-2.4.6.6-2.3-.2-.3A7 7 0 0 1 12 5Zm-2.3 3.2c-.2 0-.4.1-.6.3-.2.3-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.7 2.7 4.2 3.7 2 .8 2.5.6 3 .6.5-.1 1.4-.6 1.6-1.2.2-.6.2-1 .1-1.2-.1-.1-.2-.2-.5-.3l-1.6-.8c-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1-.2-.1-.9-.3-1.8-1.1-.6-.6-1.1-1.3-1.2-1.5-.1-.2 0-.3.1-.4l.4-.5.2-.4v-.4l-.7-1.7c-.2-.4-.3-.4-.5-.4Z"/></svg><span id="wa-top-t">WhatsApp</span></a>
     </div>
+  </header>
 
-    <!-- Sticky Filter & Search Bar -->
-    <div class="sticky-bar">
-      <!-- Row 1: Search and Sort side-by-side -->
-      <div class="search-sort-row">
-        <div class="search-wrap">
-          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="11" cy="11" r="8"/>
-            <path d="m21 21-4.3-4.3"/>
-          </svg>
-          <input type="search" class="search-input" id="q" placeholder="Rechercher..." aria-label="Recherche" autocomplete="off">
-          <button type="button" class="search-clear" id="search-clear" aria-label="Effacer la recherche" hidden>&times;</button>
-        </div>
-        <select class="sort-select" id="sort" aria-label="Tri des produits"></select>
-      </div>
-
-      <!-- Row 2: In-stock and Bonanjo-only toggles -->
-      <div class="filter-toggles-row">
-        <label class="toggle-label">
-          <input type="checkbox" id="instock">
-          <span id="label-instock">En stock seulement</span>
-        </label>
-        <label class="toggle-label">
-          <input type="checkbox" id="bon">
-          <span id="label-bon">À Bonanjo seulement</span>
-        </label>
-      </div>
-
-      <!-- Row 3: Category Scroll Chips (single horizontally scrollable row) -->
-      <div class="category-chips" id="chips" role="tablist" aria-label="Catégories"></div>
+  <section class="intro">
+    <h1 id="h1"></h1>
+    <p id="sub"></p>
+    <div class="facts">
+      <span><svg viewBox="0 0 24 24"><path d="M12 3 4 7v5c0 5 3.4 8 8 9 4.6-1 8-4 8-9V7l-8-4Z"/><path d="m9 12 2 2 4-4"/></svg><span id="f1"></span></span>
+      <span><svg viewBox="0 0 24 24"><path d="M12 21s7-5.6 7-11a7 7 0 0 0-14 0c0 5.4 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg><span id="f2"></span></span>
+      <span><svg viewBox="0 0 24 24"><path d="M4 8h3l1.5-2h7L17 8h3v11H4Z"/><circle cx="12" cy="13" r="3.2"/></svg><span id="f3"></span></span>
     </div>
+  </section>
 
-    <!-- Status Bar -->
-    <div class="status-bar">
-      <span id="count" aria-live="polite"></span>
-      <span id="status-hint">Disponibilité à confirmer sur WhatsApp</span>
+  <div class="tools">
+    <div class="row">
+      <div class="search"><input type="search" id="q" autocomplete="off" aria-label="Recherche"><button type="button" class="x" id="qx" aria-label="Effacer" hidden>&times;</button></div>
+      <select class="sort" id="sort" aria-label="Tri"></select>
     </div>
-
-    <!-- Fallback Load Error Container (hidden by default) -->
-    <div id="load-error-container" hidden></div>
-
-    <!-- Product Grid -->
-    <main class="product-grid" id="grid"></main>
-
-    <!-- Empty State -->
-    <div class="empty-state" id="empty" hidden>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="11" cy="11" r="8"/>
-        <path d="m21 21-4.3-4.3"/>
-        <path d="M8 11h6"/>
-      </svg>
-      <h3 id="empty-title">Aucun produit trouvé</h3>
-      <p id="empty-desc" style="color:var(--ink-muted);font-size:0.85rem;margin-top:4px;">Essayez de modifier votre recherche ou de désactiver certains filtres.</p>
-      <button type="button" id="btn-reset" style="margin-top:12px;padding:6px 14px;background:var(--primary);color:#fff;border:none;border-radius:var(--radius-sm);cursor:pointer;font-family:inherit;font-size:0.82rem;font-weight:600;">Réinitialiser les filtres</button>
+    <div class="toggles">
+      <label><input type="checkbox" id="instock"><span id="l-instock"></span></label>
+      <label><input type="checkbox" id="bon"><span id="l-bon"></span></label>
     </div>
-
-    <!-- Footer -->
-    <footer class="catalog-foot">
-      <div>
-        <strong>OZone Store</strong> &mdash; Mat&eacute;riel neuf sous emballage d'origine &agrave; Bonanjo.
-      </div>
-      <div>
-        WhatsApp : <a href="https://wa.me/17572755446" target="_blank" rel="noopener noreferrer">+1 (757) 275-5446</a>
-      </div>
-    </footer>
+    <div class="chips" id="chips"></div>
   </div>
 
-  <script>
-    /* OZone Store - Lightweight, Read-Only Public Catalog */
-    const WA_NUMBER = "17572755446";
+  <div class="meta"><span id="count" aria-live="polite"></span><span id="hint"></span></div>
+  <div id="err" hidden></div>
+  <main class="grid" id="grid"></main>
+  <div class="empty" id="empty" hidden><h3 id="e-t"></h3><p id="e-d"></p><button type="button" id="reset"></button></div>
+  <p class="foot" id="foot"></p>
+</div>
 
-    const STRINGS = {
-      fr: {
-        sub: "Produits neufs, sous emballage, disponibles à Bonanjo. Cherchez, triez, puis écrivez-nous pour ce qui vous intéresse.",
-        note: "<strong>Neuf & Scellé.</strong> Chaque article est non ouvert, dans son emballage d'origine.",
-        loc_city: "Bonanjo",
-        loc_area: ", Douala",
-        guar: "Neuf, non ouvert",
-        hint: "Disponibilité à confirmer sur WhatsApp",
-        all: "Tout",
-        bononly: "À Bonanjo seulement",
-        instock: "En stock seulement",
-        ph: "Rechercher...",
-        count: n => n + (n === 1 ? " article" : " articles"),
-        ask: "WhatsApp",
-        gone: "Épuisé",
-        cap: "Image illustrative",
-        bon: "Bonanjo",
-        qty: n => n + " dispo",
-        xaf: "FCFA",
-        rq: "Prix sur demande",
-        none_title: "Aucun produit trouvé",
-        none_desc: "Essayez de modifier votre recherche ou de désactiver certains filtres.",
-        reset: "Réinitialiser les filtres",
-        load_err: "Impossible de charger le catalogue pour le moment. Contactez-nous directement sur WhatsApp :",
-        msg: (t, id) => "Bonjour, je suis intéressé(e) par : " + t + " (réf " + id + ")",
-        sort: {
-          rec: "Recommandé",
-          pa: "Prix croissant",
-          pd: "Prix décroissant",
-          az: "Nom : A à Z",
-          za: "Nom : Z à A"
-        },
-        cats: {
-          "Water heaters": "Chauffe-eau",
-          "Cooktops & kitchen": "Cuisine",
-          "Bath & shower": "Salle de bain",
-          "Water & pumps": "Eau & pompes",
-          "Smart locks & security": "Serrures & sécurité",
-          "Solar": "Solaire",
-          "Lighting": "Éclairage",
-          "Furniture & home": "Maison & meubles",
-          "Tools & electronics": "Outils & électronique"
-        }
-      },
-      en: {
-        sub: "New, sealed-in-box products available in Bonanjo. Search, sort, then message us about what you want.",
-        note: "<strong>New & sealed.</strong> Every item is unopened, in its original box.",
-        loc_city: "Bonanjo",
-        loc_area: ", Douala",
-        guar: "New, unopened",
-        hint: "Availability confirmed on WhatsApp",
-        all: "All",
-        bononly: "In Bonanjo only",
-        instock: "In stock only",
-        ph: "Search...",
-        count: n => n + (n === 1 ? " item" : " items"),
-        ask: "WhatsApp",
-        gone: "Out of stock",
-        cap: "Illustrative image",
-        bon: "Bonanjo",
-        qty: n => n + " available",
-        xaf: "FCFA",
-        rq: "Price on request",
-        none_title: "No products found",
-        none_desc: "Try adjusting your search terms or turning off specific filters.",
-        reset: "Reset filters",
-        load_err: "Unable to load the catalog at this time. Please contact us directly on WhatsApp:",
-        msg: (t, id) => "Hello, I am interested in: " + t + " (ref " + id + ")",
-        sort: {
-          rec: "Recommended",
-          pa: "Price: Low to High",
-          pd: "Price: High to Low",
-          az: "Name: A to Z",
-          za: "Name: Z to A"
-        },
-        cats: {
-          "Water heaters": "Water heaters",
-          "Cooktops & kitchen": "Cooktops & kitchen",
-          "Bath & shower": "Bath & shower",
-          "Water & pumps": "Water & pumps",
-          "Smart locks & security": "Smart locks & security",
-          "Solar": "Solar",
-          "Lighting": "Lighting",
-          "Furniture & home": "Furniture & home",
-          "Tools & electronics": "Tools & electronics"
-        }
-      }
-    };
+<a class="fab" id="fab" href="#" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3Zm0 2a7 7 0 1 1-3.6 13l-.3-.2-2.4.6.6-2.3-.2-.3A7 7 0 0 1 12 5Zm-2.3 3.2c-.2 0-.4.1-.6.3-.2.3-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.7 2.7 4.2 3.7 2 .8 2.5.6 3 .6.5-.1 1.4-.6 1.6-1.2.2-.6.2-1 .1-1.2-.1-.1-.2-.2-.5-.3l-1.6-.8c-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1-.2-.1-.9-.3-1.8-1.1-.6-.6-1.1-1.3-1.2-1.5-.1-.2 0-.3.1-.4l.4-.5.2-.4v-.4l-.7-1.7c-.2-.4-.3-.4-.5-.4Z"/></svg><span id="fab-t">WhatsApp</span></a>
 
-    let ITEMS = [];
-    let currentLang = "fr";
-    let activeCategory = "all";
-    let activeSort = "rec";
-    let categoriesList = [];
+<dialog id="sheet" aria-labelledby="d-title">
+  <div class="dpic"><img id="d-img" alt="" width="640" height="480"><span class="cap" id="d-cap"></span><button type="button" class="close" id="d-close" aria-label="Fermer">&times;</button></div>
+  <div class="dbody">
+    <div class="cat" id="d-cat"></div>
+    <h2 id="d-title"></h2>
+    <div class="dprice"><span class="tag" id="d-tag"></span><span class="stock" id="d-stock"></span></div>
+    <p id="d-desc"></p>
+    <div class="ref" id="d-ref"></div>
+    <a class="go" id="d-go" href="#" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3Zm0 2a7 7 0 1 1-3.6 13l-.3-.2-2.4.6.6-2.3-.2-.3A7 7 0 0 1 12 5Zm-2.3 3.2c-.2 0-.4.1-.6.3-.2.3-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.7 2.7 4.2 3.7 2 .8 2.5.6 3 .6.5-.1 1.4-.6 1.6-1.2.2-.6.2-1 .1-1.2-.1-.1-.2-.2-.5-.3l-1.6-.8c-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1-.2-.1-.9-.3-1.8-1.1-.6-.6-1.1-1.3-1.2-1.5-.1-.2 0-.3.1-.4l.4-.5.2-.4v-.4l-.7-1.7c-.2-.4-.3-.4-.5-.4Z"/></svg><span id="d-go-t"></span></a>
+    <a class="go2" id="d-ph" href="#" target="_blank" rel="noopener noreferrer"></a>
+  </div>
+</dialog>
 
-    // Language preference handling - wrapped safely in try/catch
-    try {
-      const stored = localStorage.getItem("oz-lang");
-      if (stored === "fr" || stored === "en") currentLang = stored;
-    } catch (e) {}
+<script>
+const WA="17572755446";
+const S={
+fr:{h1:"Neuf, scellé, importé des États-Unis.",sub:"Électroménager, eau, solaire et sécurité pour la maison. Cherchez, puis écrivez-nous sur WhatsApp.",
+ f1:"Neuf, jamais ouvert",f2:"Disponible à Douala",f3:"Plus de photos sur demande",hint:"Disponibilité confirmée sur WhatsApp",
+ all:"Tout",bon:"Disponible sur place",instock:"En stock seulement",ph:"Rechercher",
+ one:"article",many:"articles",ask:"Écrire sur WhatsApp",wa:"WhatsApp",gone:"Épuisé",cap:"Image illustrative",here:"Sur place",
+ qty:n=>n+(n>1?" disponibles":" disponible"),xaf:"FCFA",rq:"Prix sur demande",ref:"Réf.",close:"Fermer",photos:"Demander plus de photos",msgp:(t,id)=>"Bonjour, pouvez-vous m'envoyer plus de photos de : "+t+" (réf "+id+")",
+ none:"Aucun produit trouvé",nonedesc:"Modifiez votre recherche ou retirez un filtre.",reset:"Réinitialiser",
+ loaderr:"Le catalogue ne se charge pas pour le moment. Écrivez-nous directement sur WhatsApp.",
+ foot:"Produits neufs dans leur emballage d'origine. Images illustratives, plus de photos sur demande.",
+ msg:(t,id)=>"Bonjour, je suis intéressé(e) par : "+t+" (réf "+id+")",gen:"Bonjour, je souhaite des informations sur vos produits OZone.",
+ sort:{rec:"Recommandé",pa:"Prix croissant",pd:"Prix décroissant",az:"Nom A à Z",za:"Nom Z à A"},
+ cats:{"Water heaters":"Chauffe-eau","Cooktops & kitchen":"Cuisine","Bath & shower":"Salle de bain","Water & pumps":"Eau et pompes","Smart locks & security":"Serrures et sécurité","Solar":"Solaire","Lighting":"Éclairage","Furniture & home":"Maison et meubles","Tools & electronics":"Outils et électronique"}},
+en:{h1:"New, sealed, imported from the USA.",sub:"Appliances, water, solar and home security. Browse, then message us on WhatsApp.",
+ f1:"New, never opened",f2:"Available in Douala",f3:"More photos on request",hint:"Availability confirmed on WhatsApp",
+ all:"All",bon:"Available locally",instock:"In stock only",ph:"Search",
+ one:"item",many:"items",ask:"Message on WhatsApp",wa:"WhatsApp",gone:"Out of stock",cap:"Illustrative image",here:"Local",
+ qty:n=>n+" available",xaf:"FCFA",rq:"Price on request",ref:"Ref.",close:"Close",photos:"Ask for more photos",msgp:(t,id)=>"Hello, could you send me more photos of: "+t+" (ref "+id+")",
+ none:"No products found",nonedesc:"Change your search or remove a filter.",reset:"Reset",
+ loaderr:"The catalog is not loading right now. Message us directly on WhatsApp.",
+ foot:"New products in their original packaging. Illustrative images, more photos on request.",
+ msg:(t,id)=>"Hello, I am interested in: "+t+" (ref "+id+")",gen:"Hello, I would like information about your OZone products.",
+ sort:{rec:"Recommended",pa:"Price: low to high",pd:"Price: high to low",az:"Name A to Z",za:"Name Z to A"},
+ cats:{}}};
+let ITEMS=[],lang="fr",cat="all",sort="rec",cats=[];
+try{const s=localStorage.getItem("oz-lang");if(s==="fr"||s==="en")lang=s}catch(e){}
+const $=id=>document.getElementById(id);
+const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const T=()=>S[lang];
+const cname=k=>(T().cats&&T().cats[k])||k;
+const title=i=>(lang==="fr"?(i.tf||i.te):(i.te||i.tf))||"";
+const desc=i=>(lang==="fr"?(i.df||i.de):(i.de||i.df))||"";
+const inStock=i=>i.stock!==false&&(i.qty==null||i.qty>0);
+const money=n=>Number(n).toLocaleString(lang==="fr"?"fr-FR":"en-US").replace(/[\u202f\u00a0]/g,"\u00a0");
+const wa=t=>"https://wa.me/"+WA+"?text="+encodeURIComponent(t);
+const imgSrc=i=>"img/"+encodeURIComponent(i.id)+(i.photo?".jpg":".webp");
+function ids(){return ITEMS.reduce((m,i)=>(m[i.id]=i,m),{})}
 
-    const $ = id => document.getElementById(id);
-
-    function escapeHtml(str) {
-      if (!str) return "";
-      return String(str)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
-    }
-
-    function catName(catKey) {
-      const T = STRINGS[currentLang];
-      return (T.cats && T.cats[catKey]) || catKey;
-    }
-
-    function itemTitle(item) {
-      return (currentLang === "fr" ? (item.tf || item.te) : (item.te || item.tf)) || "";
-    }
-
-    function itemDesc(item) {
-      return (currentLang === "fr" ? (item.df || item.de) : (item.de || item.df)) || "";
-    }
-
-    function isItemInStock(item) {
-      return (item.stock !== false) && ((item.qty == null) || item.qty > 0);
-    }
-
-    function formatPrice(xaf) {
-      if (xaf == null) return null;
-      return Number(xaf).toLocaleString(currentLang === "fr" ? "fr-FR" : "en-US");
-    }
-
-    function buildCategoryList() {
-      const counts = {};
-      for (const item of ITEMS) {
-        if (!item.cat) continue;
-        counts[item.cat] = (counts[item.cat] || 0) + 1;
-      }
-      categoriesList = Object.keys(counts).sort((a, b) => counts[b] - counts[a]);
-    }
-
-    function sortItems(list) {
-      const bySku = (a, b) => (a.id < b.id ? -1 : a.id > b.id ? 1 : 0);
-      const loc = currentLang === "fr" ? "fr" : "en";
-      const priceSort = (a, b, dir) => {
-        const x = a.xaf, y = b.xaf;
-        if (x == null && y == null) return bySku(a, b);
-        if (x == null) return 1;
-        if (y == null) return -1;
-        return dir * (x - y) || bySku(a, b);
-      };
-
-      const stockSort = (a, b) => {
-        const aOk = isItemInStock(a), bOk = isItemInStock(b);
-        if (aOk && !bOk) return -1;
-        if (!aOk && bOk) return 1;
-        return 0;
-      };
-
-      const sorters = {
-        rec: (a, b) => stockSort(a, b) || bySku(a, b),
-        pa: (a, b) => stockSort(a, b) || priceSort(a, b, 1),
-        pd: (a, b) => stockSort(a, b) || priceSort(a, b, -1),
-        az: (a, b) => stockSort(a, b) || itemTitle(a).localeCompare(itemTitle(b), loc),
-        za: (a, b) => stockSort(a, b) || itemTitle(b).localeCompare(itemTitle(a), loc)
-      };
-
-      return list.slice().sort(sorters[activeSort] || sorters.rec);
-    }
-
-    function filterItems() {
-      const query = ($("q").value || "").trim().toLowerCase();
-      const inStockOnly = $("instock").checked;
-      const bonOnly = $("bon").checked;
-
-      return ITEMS.filter(item => {
-        if (inStockOnly && !isItemInStock(item)) return false;
-        if (bonOnly && !item.bon) return false;
-        if (query) {
-          const t = itemTitle(item).toLowerCase();
-          const d = itemDesc(item).toLowerCase();
-          const c = (item.cat || "").toLowerCase();
-          const s = (item.id || "").toLowerCase();
-          if (!t.includes(query) && !d.includes(query) && !c.includes(query) && !s.includes(query)) {
-            return false;
-          }
-        }
-        return true;
-      });
-    }
-
-    function renderCategoryChips() {
-      const container = $("chips");
-      const T = STRINGS[currentLang];
-      const baseList = filterItems();
-
-      const counts = { all: baseList.length };
-      for (const item of baseList) {
-        if (item.cat) counts[item.cat] = (counts[item.cat] || 0) + 1;
-      }
-
-      const chips = [{ key: "all", label: T.all, count: counts.all || 0 }];
-      for (const cat of categoriesList) {
-        chips.push({ key: cat, label: catName(cat), count: counts[cat] || 0 });
-      }
-
-      container.innerHTML = chips.map(c => `
-        <button type="button" class="chip" data-cat="${escapeHtml(c.key)}" aria-pressed="${c.key === activeCategory}">
-          <span>${escapeHtml(c.label)}</span>
-          <span class="chip-count">${c.count}</span>
-        </button>
-      `).join("");
-
-      container.querySelectorAll(".chip").forEach(btn => {
-        btn.addEventListener("click", () => {
-          activeCategory = btn.dataset.cat;
-          renderStore();
-        });
-      });
-
-      return baseList;
-    }
-
-    function renderCard(item, index) {
-      const T = STRINGS[currentLang];
-      const ok = isItemInStock(item);
-      const title = itemTitle(item);
-      const desc = itemDesc(item);
-      const categoryLabel = catName(item.cat);
-      const isFirstRow = index < 2; // Priority load first row on 2-col phones
-      const loadingAttr = isFirstRow ? 'decoding="async" fetchpriority="high"' : 'loading="lazy" decoding="async"';
-
-      const initial = (item.id || "OZ").slice(0, 3);
-      const waText = encodeURIComponent(T.msg(title, item.id));
-      const waUrl = `https://wa.me/${WA_NUMBER}?text=${waText}`;
-
-      let badgesHtml = '<div class="badge-rack">';
-      if (item.bon) {
-        badgesHtml += `<span class="badge badge-bon">${escapeHtml(T.bon)}</span>`;
-      }
-      if (!ok) {
-        badgesHtml += `<span class="badge badge-out">${escapeHtml(T.gone)}</span>`;
-      } else if (item.qty != null && item.qty > 0) {
-        badgesHtml += `<span class="badge badge-qty">${escapeHtml(T.qty(item.qty))}</span>`;
-      }
-      badgesHtml += '</div>';
-
-      const photoHtml = `
-        <div class="photo-box">
-          ${badgesHtml}
-          <div class="photo-placeholder" aria-hidden="true">${escapeHtml(initial)}</div>
-          <img src="img/${escapeHtml(item.id)}.jpg"
-               alt="${escapeHtml(title)}"
-               width="640"
-               height="480"
-               ${loadingAttr}
-               onerror="this.style.display='none';">
-          <span class="photo-cap">${escapeHtml(T.cap)}</span>
-        </div>
-      `;
-
-      let priceHtml = '';
-      if (item.xaf != null) {
-        priceHtml = `<div class="card-price">${formatPrice(item.xaf)} <span>${escapeHtml(T.xaf)}</span></div>`;
-      } else {
-        priceHtml = `<div class="card-price price-rq">${escapeHtml(T.rq)}</div>`;
-      }
-
-      const waSvg = `<svg viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.698.067-2.001-.476-1.554-.648-2.552-2.227-2.629-2.33-.077-.104-.633-.843-.633-1.608 0-.766.4-.1.141.547-.145.147-.32.32-.472.48-.152.16-.312.18-.573.05-.26-.13-1.1-.405-2.096-1.292-.774-.69-1.297-1.543-1.449-1.803-.152-.26-.016-.401.114-.53.117-.117.26-.304.39-.456.13-.152.173-.26.26-.434.087-.174.043-.326-.022-.456-.065-.13-.586-1.413-.804-1.935-.212-.509-.427-.44-.586-.448h-.502c-.174 0-.456.065-.695.326-.239.26-.913.892-.913 2.174 0 1.282.934 2.521 1.064 2.695.13.174 1.838 2.807 4.453 3.935 2.615 1.128 2.615.752 3.084.708.469-.044 1.512-.619 1.727-1.217z"/></svg>`;
-
-      const card = document.createElement("article");
-      card.className = "card" + (ok ? "" : " out");
-      card.innerHTML = `
-        ${photoHtml}
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-cat">${escapeHtml(categoryLabel)}</span>
-            <span class="card-sku">${escapeHtml(item.id)}</span>
-          </div>
-          <h2 class="card-title">${escapeHtml(title)}</h2>
-          ${desc ? `<p class="card-desc">${escapeHtml(desc)}</p>` : ''}
-          <div class="card-price-wrap">${priceHtml}</div>
-          <div class="card-action">
-            <a class="btn-wa" href="${waUrl}" target="_blank" rel="noopener noreferrer">
-              ${waSvg}
-              <span>${escapeHtml(T.ask)}</span>
-            </a>
-          </div>
-        </div>
-      `;
-      return card;
-    }
-
-    function renderStore() {
-      const T = STRINGS[currentLang];
-      document.documentElement.lang = currentLang;
-
-      // Update static header and trust text safely
-      $("header-sub").textContent = T.sub;
-      $("trust-note").innerHTML = T.note;
-      
-      // Fix raw tag bug safely without unsafe string interpolation
-      const locEl = $("trust-loc");
-      if (locEl) {
-        locEl.textContent = "";
-        const strong = document.createElement("strong");
-        strong.textContent = T.loc_city;
-        locEl.appendChild(strong);
-        locEl.appendChild(document.createTextNode(T.loc_area));
-      }
-
-      $("trust-guar").textContent = T.guar;
-      $("status-hint").textContent = T.hint;
-      $("label-instock").textContent = T.instock;
-      $("label-bon").textContent = T.bononly;
-
-      $("q").placeholder = T.ph;
-      $("search-clear").hidden = !$("q").value;
-
-      const sortEl = $("sort");
-      sortEl.innerHTML = Object.keys(T.sort)
-        .map(k => `<option value="${k}"${k === activeSort ? " selected" : ""}>${escapeHtml(T.sort[k])}</option>`)
-        .join("");
-
-      $("l-fr").setAttribute("aria-pressed", currentLang === "fr");
-      $("l-en").setAttribute("aria-pressed", currentLang === "en");
-
-      const baseList = renderCategoryChips();
-      const filtered = baseList.filter(i => activeCategory === "all" || i.cat === activeCategory);
-      const displayList = sortItems(filtered);
-
-      $("count").innerHTML = `<strong>${displayList.length}</strong> ${escapeHtml(T.count(displayList.length).replace(/^\d+\s*/, ''))}`;
-
-      const gridEl = $("grid");
-      const emptyEl = $("empty");
-
-      if (displayList.length === 0) {
-        emptyEl.hidden = false;
-        $("empty-title").textContent = T.none_title;
-        $("empty-desc").textContent = T.none_desc;
-        $("btn-reset").textContent = T.reset;
-        gridEl.innerHTML = "";
-        return;
-      }
-
-      emptyEl.hidden = true;
-      gridEl.innerHTML = "";
-
-      // Safe per-card rendering: error in one item never breaks the other cards
-      displayList.forEach((item, idx) => {
-        try {
-          const card = renderCard(item, idx);
-          gridEl.appendChild(card);
-        } catch (err) {
-          console.error("Error rendering item " + item.id, err);
-        }
-      });
-    }
-
-    function showLoadError() {
-      const T = STRINGS[currentLang];
-      const container = $("load-error-container");
-      container.hidden = false;
-      container.innerHTML = `
-        <div class="load-error-box">
-          <p>${escapeHtml(T.load_err)}</p>
-          <a class="btn-wa-header" href="https://wa.me/${WA_NUMBER}" target="_blank" rel="noopener noreferrer">
-            <svg style="width:14px;height:14px;fill:currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.698.067-2.001-.476-1.554-.648-2.552-2.227-2.629-2.33-.077-.104-.633-.843-.633-1.608 0-.766.4-.1.141.547-.145.147-.32.32-.472.48-.152.16-.312.18-.573.05-.26-.13-1.1-.405-2.096-1.292-.774-.69-1.297-1.543-1.449-1.803-.152-.26-.016-.401.114-.53.117-.117.26-.304.39-.456.13-.152.173-.26.26-.434.087-.174.043-.326-.022-.456-.065-.13-.586-1.413-.804-1.935-.212-.509-.427-.44-.586-.448h-.502c-.174 0-.456.065-.695.326-.239.26-.913.892-.913 2.174 0 1.282.934 2.521 1.064 2.695.13.174 1.838 2.807 4.453 3.935 2.615 1.128 2.615.752 3.084.708.469-.044 1.512-.619 1.727-1.217z"/></svg>
-            <span>WhatsApp +1 (757) 275-5446</span>
-          </a>
-        </div>
-      `;
-      $("grid").innerHTML = "";
-    }
-
-    // Event Listeners for Filters
-    $("q").addEventListener("input", () => {
-      activeCategory = "all";
-      renderStore();
-    });
-
-    $("search-clear").addEventListener("click", () => {
-      $("q").value = "";
-      renderStore();
-      $("q").focus();
-    });
-
-    $("sort").addEventListener("change", e => {
-      activeSort = e.target.value;
-      renderStore();
-    });
-
-    $("instock").addEventListener("change", () => renderStore());
-    $("bon").addEventListener("change", () => renderStore());
-
-    $("btn-reset").addEventListener("click", () => {
-      $("q").value = "";
-      $("instock").checked = false;
-      $("bon").checked = false;
-      activeCategory = "all";
-      activeSort = "rec";
-      renderStore();
-    });
-
-    for (const langKey of ["fr", "en"]) {
-      $("l-" + langKey).addEventListener("click", () => {
-        currentLang = langKey;
-        try { localStorage.setItem("oz-lang", langKey); } catch (e) {}
-        renderStore();
-      });
-    }
-
-    // Load items.json on every page load
-    fetch("items.json", { cache: "no-cache" })
-      .then(res => {
-        if (!res.ok) throw new Error("HTTP " + res.status);
-        return res.json();
-      })
-      .then(data => {
-        if (Array.isArray(data) && data.length) {
-          ITEMS = data;
-          buildCategoryList();
-          renderStore();
-        } else {
-          showLoadError();
-        }
-      })
-      .catch(err => {
-        console.error("Failed to load items.json:", err);
-        showLoadError();
-      });
-  </script>
+function visible(){
+  const q=($("q").value||"").trim().toLowerCase(),a=$("instock").checked,b=$("bon").checked;
+  return ITEMS.filter(i=>{
+    if(a&&!inStock(i))return false;if(b&&!i.bon)return false;
+    if(q&&!(title(i)+" "+desc(i)+" "+(i.cat||"")+" "+cname(i.cat)+" "+i.id).toLowerCase().includes(q))return false;
+    return true});
+}
+function sorted(l){
+  const sku=(a,b)=>a.id<b.id?-1:1,loc=lang;
+  const st=(a,b)=>(inStock(b)-inStock(a));
+  const pr=(a,b,d)=>a.xaf==null&&b.xaf==null?sku(a,b):a.xaf==null?1:b.xaf==null?-1:(d*(a.xaf-b.xaf)||sku(a,b));
+  const f={rec:(a,b)=>st(a,b)||sku(a,b),pa:(a,b)=>st(a,b)||pr(a,b,1),pd:(a,b)=>st(a,b)||pr(a,b,-1),
+    az:(a,b)=>st(a,b)||title(a).localeCompare(title(b),loc),za:(a,b)=>st(a,b)||title(b).localeCompare(title(a),loc)}[sort]||null;
+  return l.slice().sort(f);
+}
+function tagHtml(i){
+  const t=T();
+  if(!inStock(i))return `<span class="tag">${esc(t.gone)}</span>`;
+  return i.xaf!=null?`<span class="tag">${money(i.xaf)}<small>${t.xaf}</small></span>`:`<span class="tag rq">${esc(t.rq)}</span>`;
+}
+function card(i,n){
+  const t=T(),el=document.createElement("button");
+  el.type="button";el.className="card"+(inStock(i)?"":" out");el.dataset.id=i.id;
+  const src=imgSrc(i);
+  el.innerHTML=`<div class="pic"><i aria-hidden="true">${esc(i.id.slice(3))}</i>
+    <img src="${src}" alt="" width="640" height="480" ${n<4?'fetchpriority="high"':'loading="lazy"'} decoding="async" onerror="this.remove()">
+    ${i.bon&&inStock(i)?`<span class="flag">${esc(t.here)}</span>`:""}${tagHtml(i)}</div>
+    <div class="body"><span class="cat">${esc(cname(i.cat))}</span><span class="title">${esc(title(i))}</span></div>`;
+  el.setAttribute("aria-label",title(i)+(i.xaf!=null?", "+money(i.xaf)+" "+t.xaf:""));
+  return el;
+}
+function chips(base){
+  const t=T(),c={all:base.length};base.forEach(i=>{if(i.cat)c[i.cat]=(c[i.cat]||0)+1});
+  const list=[["all",t.all]].concat(cats.map(k=>[k,cname(k)]));
+  $("chips").innerHTML=list.map(([k,l])=>`<button type="button" class="chip" data-c="${esc(k)}" aria-pressed="${k===cat}">${esc(l)}<small>${c[k]||0}</small></button>`).join("");
+}
+function paint(){
+  const t=T();document.documentElement.lang=lang;
+  $("h1").textContent=t.h1;$("sub").textContent=t.sub;$("f1").textContent=t.f1;$("f2").textContent=t.f2;$("f3").textContent=t.f3;
+  $("hint").textContent=t.hint;$("l-instock").textContent=t.instock;$("l-bon").textContent=t.bon;
+  $("q").placeholder=t.ph;$("qx").hidden=!$("q").value;$("foot").textContent=t.foot;
+  $("wa-top-t").textContent=t.wa;$("fab-t").textContent=t.ask;$("wa-top").href=$("fab").href=wa(t.gen);
+  $("d-close").setAttribute("aria-label",t.close);$("e-t").textContent=t.none;$("e-d").textContent=t.nonedesc;$("reset").textContent=t.reset;
+  $("sort").innerHTML=Object.keys(t.sort).map(k=>`<option value="${k}"${k===sort?" selected":""}>${esc(t.sort[k])}</option>`).join("");
+  $("l-fr").setAttribute("aria-pressed",lang==="fr");$("l-en").setAttribute("aria-pressed",lang==="en");
+  const base=visible();chips(base);
+  const list=sorted(base.filter(i=>cat==="all"||i.cat===cat));
+  $("count").innerHTML="<strong>"+list.length+"</strong> "+esc(list.length===1?t.one:t.many);
+  const g=$("grid");g.textContent="";$("empty").hidden=list.length>0;
+  const fr=document.createDocumentFragment();
+  list.forEach((i,n)=>{try{fr.appendChild(card(i,n))}catch(e){console.error(i.id,e)}});
+  g.appendChild(fr);
+  if($("sheet").open&&cur)fill(cur);
+}
+let cur=null;
+function fill(i){
+  const t=T(),ok=inStock(i);
+  $("d-img").src=imgSrc(i);$("d-img").style.display="";$("d-img").alt=title(i);$("d-cap").textContent=t.cap;
+  $("d-cat").textContent=cname(i.cat);$("d-title").textContent=title(i);
+  $("d-tag").className="tag"+(ok&&i.xaf==null?" rq":"");$("d-tag").innerHTML=tagHtml(i).replace(/^<span class="tag[^"]*">|<\/span>$/g,"");
+  const s=$("d-stock");s.className="stock"+(ok?"":" no");s.textContent=ok?(i.qty!=null&&i.qty>0?t.qty(i.qty):""):t.gone;
+  $("d-desc").textContent=desc(i);$("d-ref").textContent=t.ref+" "+i.id;
+  const g=$("d-go");g.className="go"+(ok?"":" off");g.href=ok?wa(t.msg(title(i),i.id)):"#";$("d-go-t").textContent=t.ask;
+  const ph=$("d-ph");ph.hidden=!ok;ph.textContent=t.photos;ph.href=wa(t.msgp(title(i),i.id));
+}
+function openItem(id){
+  const i=ids()[id];if(!i)return;cur=i;fill(i);
+  const d=$("sheet");if(!d.open)d.showModal();
+  try{history.replaceState(null,"","#"+id)}catch(e){}
+}
+function shut(){const d=$("sheet");if(d.open)d.close()}
+$("sheet").addEventListener("close",()=>{cur=null;try{history.replaceState(null,"",location.pathname+location.search)}catch(e){}});
+$("sheet").addEventListener("click",e=>{if(e.target===$("sheet"))shut()});
+$("d-close").addEventListener("click",shut);
+$("d-img").addEventListener("error",e=>{e.target.style.display="none"});
+$("grid").addEventListener("click",e=>{const c=e.target.closest(".card");if(c)openItem(c.dataset.id)});
+$("chips").addEventListener("click",e=>{const b=e.target.closest(".chip");if(b){cat=b.dataset.c;paint()}});
+$("q").addEventListener("input",()=>{cat="all";paint()});
+$("qx").addEventListener("click",()=>{$("q").value="";paint();$("q").focus()});
+$("sort").addEventListener("change",e=>{sort=e.target.value;paint()});
+$("instock").addEventListener("change",paint);$("bon").addEventListener("change",paint);
+$("reset").addEventListener("click",()=>{$("q").value="";$("instock").checked=$("bon").checked=false;cat="all";sort="rec";paint()});
+["fr","en"].forEach(k=>$("l-"+k).addEventListener("click",()=>{lang=k;try{localStorage.setItem("oz-lang",k)}catch(e){}paint()}));
+window.addEventListener("hashchange",()=>{const id=location.hash.slice(1);if(/^OZ-\d+$/.test(id))openItem(id)});
+function start(data){
+  if(!Array.isArray(data)||!data.length)return fail();
+  ITEMS=data;const n={};data.forEach(i=>{if(i.cat)n[i.cat]=(n[i.cat]||0)+1});
+  cats=Object.keys(n).sort((a,b)=>n[b]-n[a]);paint();
+  const id=location.hash.slice(1);if(/^OZ-\d+$/.test(id))openItem(id);
+}
+function fail(){const e=$("err");e.hidden=false;e.className="err";e.textContent=T().loaderr;paint()}
+fetch("items.json",{cache:"no-cache"}).then(r=>{if(!r.ok)throw 0;return r.json()}).then(start).catch(fail);
+</script>
 </body>
 </html>
