@@ -1,0 +1,10 @@
+{
+  "name": "ozone-deals",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node server.mjs",
+    "build": "node -e 'const fs=require(\"fs\");fs.rmSync(\"dist\",{recursive:true,force:true});fs.mkdirSync(\"dist\",{recursive:true});fs.cpSync(\"docs\",\"dist\",{recursive:true});fs.cpSync(\"docs\",\"dist/docs\",{recursive:true});console.log(\"Build complete: dist created\");'"
+  }
+}

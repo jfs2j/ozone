@@ -1,0 +1,1545 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>OZone Store | Neuf sous emballage à Bonanjo</title>
+  <meta name="description" content="Catalogue de produits neufs, scellés d'origine disponibles à Bonanjo, Douala. Chauffe-eau, plaques de cuisson, pompes, solaire, serrures connectées.">
+  <meta property="og:title" content="OZone Store">
+  <meta property="og:description" content="Produits neufs, scellés sous emballage à Bonanjo, Douala. Disponibilité à confirmer sur WhatsApp.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0f172a">
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --surface-subtle: #f1f5f9;
+      --ink: #0f172a;
+      --ink-muted: #64748b;
+      --ink-subtle: #94a3b8;
+      --line: #e2e8f0;
+      --line-subtle: #f1f5f9;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --primary-tint: #eff6ff;
+      --wa: #128c7e;
+      --wa-hover: #075e54;
+      --ok: #059669;
+      --ok-tint: #ecfdf5;
+      --bad: #dc2626;
+      --bad-tint: #fef2f2;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-pill: 9999px;
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
+      --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.07), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+      --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #090d16;
+        --surface: #111827;
+        --surface-subtle: #1f2937;
+        --ink: #f8fafc;
+        --ink-muted: #94a3b8;
+        --ink-subtle: #64748b;
+        --line: #1e293b;
+        --line-subtle: #172033;
+        --primary: #3b82f6;
+        --primary-hover: #60a5fa;
+        --primary-tint: #1e293b;
+        --ok: #10b981;
+        --ok-tint: #064e3b;
+        --bad: #f87171;
+        --bad-tint: #450a0a;
+        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+        color-scheme: dark;
+      }
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.45;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 48px;
+    }
+
+    .wrap {
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+
+    @media (min-width: 640px) {
+      .wrap {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+    }
+
+    /* Top Brand Header */
+    header.top {
+      padding-top: 10px;
+      padding-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    @media (min-width: 640px) {
+      header.top {
+        padding-top: 16px;
+        padding-bottom: 12px;
+      }
+    }
+
+    .brand-block {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+    }
+
+    @media (min-width: 640px) {
+      .brand-block {
+        gap: 12px;
+      }
+    }
+
+    .logo-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, #1e3a8a, #2563eb);
+      display: grid;
+      place-items: center;
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.35);
+      flex-shrink: 0;
+    }
+
+    @media (min-width: 640px) {
+      .logo-badge {
+        width: 40px;
+        height: 40px;
+        border-radius: var(--radius-md);
+      }
+    }
+
+    .logo-badge svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    @media (min-width: 640px) {
+      .logo-badge svg {
+        width: 22px;
+        height: 22px;
+      }
+    }
+
+    .brand-text h1 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--ink);
+    }
+
+    @media (min-width: 640px) {
+      .brand-text h1 {
+        font-size: 1.65rem;
+      }
+    }
+
+    .brand-text h1 span {
+      color: var(--primary);
+    }
+
+    .brand-text .sub {
+      display: none;
+      color: var(--ink-muted);
+      font-size: 0.82rem;
+      margin-top: 2px;
+      max-width: 58ch;
+      line-height: 1.35;
+    }
+
+    @media (min-width: 640px) {
+      .brand-text .sub {
+        display: block;
+      }
+    }
+
+    /* Header Actions: Language & WhatsApp */
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    @media (min-width: 640px) {
+      .header-actions {
+        gap: 10px;
+      }
+    }
+
+    .lang-switcher {
+      display: inline-flex;
+      background: var(--surface-subtle);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      padding: 2px;
+    }
+
+    .lang-switcher button {
+      border: none;
+      background: transparent;
+      color: var(--ink-muted);
+      font-family: inherit;
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    @media (min-width: 640px) {
+      .lang-switcher button {
+        font-size: 0.78rem;
+        padding: 5px 10px;
+      }
+    }
+
+    .lang-switcher button[aria-pressed="true"] {
+      background: var(--surface);
+      color: var(--ink);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-wa-header {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: #128c7e;
+      color: #ffffff;
+      font-size: 0.76rem;
+      font-weight: 600;
+      padding: 6px 10px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: background 0.15s ease;
+      white-space: nowrap;
+    }
+
+    @media (min-width: 640px) {
+      .btn-wa-header {
+        font-size: 0.82rem;
+        padding: 7px 13px;
+        gap: 6px;
+      }
+    }
+
+    .btn-wa-header:hover {
+      background: #075e54;
+    }
+
+    /* Trust & Info Strip - Compact Single Line on Mobile */
+    .trust-strip {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      padding: 6px 10px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 0.76rem;
+      box-shadow: var(--shadow-sm);
+      overflow-x: auto;
+      white-space: nowrap;
+      scrollbar-width: none;
+    }
+
+    .trust-strip::-webkit-scrollbar {
+      display: none;
+    }
+
+    @media (min-width: 640px) {
+      .trust-strip {
+        border-radius: var(--radius-md);
+        padding: 8px 14px;
+        margin-bottom: 12px;
+        font-size: 0.82rem;
+        flex-wrap: wrap;
+        white-space: normal;
+      }
+    }
+
+    .trust-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--ink-muted);
+      flex-shrink: 0;
+    }
+
+    .trust-item strong, .trust-item b {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .trust-icon {
+      width: 14px;
+      height: 14px;
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+
+    @media (min-width: 640px) {
+      .trust-icon {
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    .trust-divider {
+      color: var(--ink-subtle);
+      opacity: 0.5;
+      user-select: none;
+    }
+
+    /* Sticky Navigation & Filter Bar */
+    .sticky-bar {
+      position: sticky;
+      top: env(safe-area-inset-top, 0px);
+      z-index: 20;
+      background: var(--bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding-top: 4px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    @media (min-width: 640px) {
+      .sticky-bar {
+        padding-top: 8px;
+        padding-bottom: 10px;
+        margin-bottom: 12px;
+        gap: 8px;
+      }
+    }
+
+    /* Row 1: Search and Sort side-by-side */
+    .search-sort-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      width: 100%;
+    }
+
+    @media (min-width: 640px) {
+      .search-sort-row {
+        gap: 10px;
+      }
+    }
+
+    .search-wrap {
+      position: relative;
+      flex: 1 1 auto;
+      min-width: 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 9px;
+      width: 14px;
+      height: 14px;
+      color: var(--ink-subtle);
+      pointer-events: none;
+    }
+
+    .search-input {
+      width: 100%;
+      height: 36px;
+      padding: 6px 26px 6px 28px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      background: var(--surface);
+      color: var(--ink);
+      font-family: inherit;
+      font-size: 0.84rem;
+      outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+
+    @media (min-width: 640px) {
+      .search-input {
+        height: 38px;
+        padding: 8px 30px 8px 32px;
+        font-size: 0.88rem;
+      }
+    }
+
+    .search-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+    }
+
+    .search-clear {
+      position: absolute;
+      right: 7px;
+      border: none;
+      background: var(--surface-subtle);
+      color: var(--ink-muted);
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      font-size: 11px;
+      line-height: 1;
+    }
+
+    .sort-select {
+      height: 36px;
+      padding: 0 8px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      background: var(--surface);
+      color: var(--ink);
+      font-family: inherit;
+      font-size: 0.78rem;
+      outline: none;
+      cursor: pointer;
+      flex: 0 0 120px;
+      max-width: 42%;
+    }
+
+    @media (min-width: 640px) {
+      .sort-select {
+        height: 38px;
+        font-size: 0.84rem;
+        flex: 0 0 180px;
+        max-width: none;
+        padding: 0 10px;
+      }
+    }
+
+    /* Row 2: In-stock and Bonanjo-only toggles */
+    .filter-toggles-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.75rem;
+      color: var(--ink-muted);
+      padding: 0 2px;
+    }
+
+    @media (min-width: 640px) {
+      .filter-toggles-row {
+        font-size: 0.8rem;
+        gap: 16px;
+      }
+    }
+
+    .toggle-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .toggle-label input[type="checkbox"] {
+      width: 13px;
+      height: 13px;
+      accent-color: var(--primary);
+      cursor: pointer;
+    }
+
+    /* Row 3: Category Chips on one horizontally scrollable row */
+    .category-chips {
+      display: flex;
+      overflow-x: auto;
+      white-space: nowrap;
+      gap: 5px;
+      padding-top: 2px;
+      padding-bottom: 3px;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .category-chips::-webkit-scrollbar {
+      display: none;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 9px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-pill);
+      background: var(--surface);
+      color: var(--ink-muted);
+      font-family: inherit;
+      font-size: 0.73rem;
+      font-weight: 500;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+      flex-shrink: 0;
+    }
+
+    @media (min-width: 640px) {
+      .chip {
+        font-size: 0.78rem;
+        padding: 5px 11px;
+        gap: 6px;
+      }
+    }
+
+    .chip:hover {
+      border-color: var(--ink-subtle);
+      background: var(--surface-subtle);
+    }
+
+    .chip[aria-pressed="true"] {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #ffffff;
+      font-weight: 600;
+      box-shadow: 0 2px 5px rgba(37, 99, 235, 0.25);
+    }
+
+    .chip .chip-count {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      padding: 1px 5px;
+      border-radius: var(--radius-pill);
+      background: rgba(15, 23, 42, 0.08);
+    }
+
+    .chip[aria-pressed="true"] .chip-count {
+      background: rgba(255, 255, 255, 0.25);
+      color: #ffffff;
+    }
+
+    /* Status hint & count bar */
+    .status-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-size: 0.75rem;
+      color: var(--ink-muted);
+      padding: 0 2px;
+    }
+
+    @media (min-width: 640px) {
+      .status-bar {
+        font-size: 0.82rem;
+        margin-bottom: 12px;
+      }
+    }
+
+    .status-bar strong {
+      color: var(--ink);
+    }
+
+    /* Product Grid: Strict 2 columns on phones */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    @media (min-width: 640px) {
+      .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 16px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 18px;
+      }
+    }
+
+    /* Product Card */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+    }
+
+    @media (min-width: 640px) {
+      .card {
+        border-radius: var(--radius-md);
+        transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+      }
+      .card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+      }
+    }
+
+    .card.out {
+      opacity: 0.7;
+    }
+
+    .card.out .photo-box img {
+      filter: grayscale(1);
+      opacity: 0.55;
+    }
+
+    /* Photo Box with 4:3 Aspect Ratio and Layout-Shift Prevention */
+    .photo-box {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      width: 100%;
+      background: var(--surface-subtle);
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      border-bottom: 1px solid var(--line-subtle);
+    }
+
+    .photo-box img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .photo-placeholder {
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--primary);
+      opacity: 0.3;
+      text-transform: uppercase;
+      user-select: none;
+    }
+
+    @media (min-width: 640px) {
+      .photo-placeholder {
+        font-size: 2rem;
+      }
+    }
+
+    /* Illustrative Image Caption */
+    .photo-cap {
+      position: absolute;
+      right: 5px;
+      bottom: 5px;
+      background: rgba(15, 23, 42, 0.78);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      color: #ffffff;
+      font-size: 0.58rem;
+      font-weight: 500;
+      padding: 2px 5px;
+      border-radius: 3px;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    @media (min-width: 640px) {
+      .photo-cap {
+        right: 8px;
+        bottom: 8px;
+        font-size: 0.64rem;
+        padding: 2.5px 7px;
+        border-radius: 4px;
+      }
+    }
+
+    /* Badges */
+    .badge-rack {
+      position: absolute;
+      left: 5px;
+      top: 5px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 3px;
+      z-index: 2;
+    }
+
+    @media (min-width: 640px) {
+      .badge-rack {
+        left: 8px;
+        top: 8px;
+        gap: 4px;
+      }
+    }
+
+    .badge {
+      font-size: 0.62rem;
+      font-weight: 700;
+      padding: 2px 5px;
+      border-radius: 3px;
+      line-height: 1.15;
+    }
+
+    @media (min-width: 640px) {
+      .badge {
+        font-size: 0.68rem;
+        padding: 2.5px 6px;
+        border-radius: 4px;
+      }
+    }
+
+    .badge-bon {
+      background: #0f172a;
+      color: #ffffff;
+    }
+
+    .badge-qty {
+      background: var(--ok-tint);
+      color: var(--ok);
+      border: 1px solid rgba(5, 150, 105, 0.3);
+    }
+
+    .badge-out {
+      background: var(--bad);
+      color: #ffffff;
+    }
+
+    /* Card Body */
+    .card-body {
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex: 1;
+    }
+
+    @media (min-width: 640px) {
+      .card-body {
+        padding: 12px;
+        gap: 6px;
+      }
+    }
+
+    .card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 4px;
+    }
+
+    .card-cat {
+      font-size: 0.62rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--ink-muted);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    @media (min-width: 640px) {
+      .card-cat {
+        font-size: 0.66rem;
+      }
+    }
+
+    .card-sku {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      font-weight: 600;
+      color: var(--ink-subtle);
+      background: var(--surface-subtle);
+      padding: 1px 4px;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+
+    .card-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--ink);
+      overflow-wrap: anywhere;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    @media (min-width: 640px) {
+      .card-title {
+        font-size: 0.95rem;
+        line-height: 1.3;
+      }
+    }
+
+    .card-desc {
+      font-size: 0.72rem;
+      color: var(--ink-muted);
+      line-height: 1.3;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    @media (min-width: 640px) {
+      .card-desc {
+        font-size: 0.78rem;
+        line-height: 1.35;
+      }
+    }
+
+    /* Card Price */
+    .card-price-wrap {
+      margin-top: auto;
+      padding-top: 4px;
+    }
+
+    .card-price {
+      font-size: 0.95rem;
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+    }
+
+    @media (min-width: 640px) {
+      .card-price {
+        font-size: 1.1rem;
+      }
+    }
+
+    .card-price span {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--ink-muted);
+      margin-left: 2px;
+    }
+
+    .card-price.price-rq {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--ink-muted);
+      font-style: italic;
+    }
+
+    /* WhatsApp Button */
+    .card-action {
+      padding-top: 6px;
+    }
+
+    .btn-wa {
+      width: 100%;
+      height: 32px;
+      border: none;
+      background: #128c7e;
+      color: #ffffff;
+      font-family: inherit;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.15s ease;
+      white-space: nowrap;
+    }
+
+    @media (min-width: 640px) {
+      .btn-wa {
+        height: 36px;
+        font-size: 0.82rem;
+        gap: 6px;
+      }
+    }
+
+    .btn-wa:hover:not(:disabled) {
+      background: #075e54;
+    }
+
+    .btn-wa:disabled {
+      background: var(--surface-subtle);
+      color: var(--ink-subtle);
+      border: 1px solid var(--line);
+      cursor: not-allowed;
+    }
+
+    .btn-wa svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+      flex-shrink: 0;
+    }
+
+    /* Empty State & Error Banner */
+    .empty-state {
+      padding: 40px 16px;
+      text-align: center;
+      background: var(--surface);
+      border: 1px dashed var(--line);
+      border-radius: var(--radius-md);
+      margin: 16px 0;
+      grid-column: 1 / -1;
+    }
+
+    .empty-state svg {
+      width: 40px;
+      height: 40px;
+      color: var(--ink-subtle);
+      margin-bottom: 8px;
+    }
+
+    .load-error-box {
+      padding: 24px 16px;
+      text-align: center;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      margin: 20px 0;
+    }
+
+    .load-error-box p {
+      font-size: 0.9rem;
+      color: var(--ink-muted);
+      margin-bottom: 12px;
+    }
+
+    /* Footer */
+    footer.catalog-foot {
+      margin-top: 36px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      color: var(--ink-muted);
+      font-size: 0.78rem;
+    }
+
+    @media (min-width: 640px) {
+      footer.catalog-foot {
+        margin-top: 48px;
+        padding-top: 24px;
+        font-size: 0.82rem;
+      }
+    }
+
+    footer.catalog-foot a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <!-- Top Header -->
+    <header class="top">
+      <div class="brand-block">
+        <div class="logo-badge" title="OZone">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="9"/>
+            <path d="M8.5 11.5c1.5 2.5 5.5 2.5 7 0"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1>O<span>Zone</span></h1>
+          <p class="sub" id="header-sub">Produits neufs, sous emballage, disponibles à Bonanjo. Cherchez, triez, puis écrivez-nous pour ce qui vous intéresse.</p>
+        </div>
+      </div>
+      
+      <div class="header-actions">
+        <div class="lang-switcher" role="group" aria-label="Language">
+          <button id="l-fr" aria-pressed="true" type="button">FR</button>
+          <button id="l-en" aria-pressed="false" type="button">EN</button>
+        </div>
+        <a class="btn-wa-header" href="https://wa.me/17572755446" target="_blank" rel="noopener noreferrer">
+          <svg style="width:13px;height:13px;fill:currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.698.067-2.001-.476-1.554-.648-2.552-2.227-2.629-2.33-.077-.104-.633-.843-.633-1.608 0-.766.4-.1.141.547-.145.147-.32.32-.472.48-.152.16-.312.18-.573.05-.26-.13-1.1-.405-2.096-1.292-.774-.69-1.297-1.543-1.449-1.803-.152-.26-.016-.401.114-.53.117-.117.26-.304.39-.456.13-.152.173-.26.26-.434.087-.174.043-.326-.022-.456-.065-.13-.586-1.413-.804-1.935-.212-.509-.427-.44-.586-.448h-.502c-.174 0-.456.065-.695.326-.239.26-.913.892-.913 2.174 0 1.282.934 2.521 1.064 2.695.13.174 1.838 2.807 4.453 3.935 2.615 1.128 2.615.752 3.084.708.469-.044 1.512-.619 1.727-1.217z"/></svg>
+          <span>WhatsApp</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Trust Banner - Compact Single Line -->
+    <div class="trust-strip">
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/>
+          <path d="m3.3 7 8.7 5 8.7-5"/>
+          <path d="M12 22V12"/>
+        </svg>
+        <span id="trust-note"><strong>Neuf & Scellé.</strong> Chaque article est non ouvert, dans son emballage d'origine.</span>
+      </div>
+      <span class="trust-divider">·</span>
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+          <circle cx="12" cy="10" r="3"/>
+        </svg>
+        <span id="trust-loc"><strong>Bonanjo</strong>, Douala</span>
+      </div>
+      <span class="trust-divider">·</span>
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/>
+        </svg>
+        <span id="trust-guar">Neuf, non ouvert</span>
+      </div>
+    </div>
+
+    <!-- Sticky Filter & Search Bar -->
+    <div class="sticky-bar">
+      <!-- Row 1: Search and Sort side-by-side -->
+      <div class="search-sort-row">
+        <div class="search-wrap">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/>
+            <path d="m21 21-4.3-4.3"/>
+          </svg>
+          <input type="search" class="search-input" id="q" placeholder="Rechercher..." aria-label="Recherche" autocomplete="off">
+          <button type="button" class="search-clear" id="search-clear" aria-label="Effacer la recherche" hidden>&times;</button>
+        </div>
+        <select class="sort-select" id="sort" aria-label="Tri des produits"></select>
+      </div>
+
+      <!-- Row 2: In-stock and Bonanjo-only toggles -->
+      <div class="filter-toggles-row">
+        <label class="toggle-label">
+          <input type="checkbox" id="instock">
+          <span id="label-instock">En stock seulement</span>
+        </label>
+        <label class="toggle-label">
+          <input type="checkbox" id="bon">
+          <span id="label-bon">À Bonanjo seulement</span>
+        </label>
+      </div>
+
+      <!-- Row 3: Category Scroll Chips (single horizontally scrollable row) -->
+      <div class="category-chips" id="chips" role="tablist" aria-label="Catégories"></div>
+    </div>
+
+    <!-- Status Bar -->
+    <div class="status-bar">
+      <span id="count" aria-live="polite"></span>
+      <span id="status-hint">Disponibilité à confirmer sur WhatsApp</span>
+    </div>
+
+    <!-- Fallback Load Error Container (hidden by default) -->
+    <div id="load-error-container" hidden></div>
+
+    <!-- Product Grid -->
+    <main class="product-grid" id="grid"></main>
+
+    <!-- Empty State -->
+    <div class="empty-state" id="empty" hidden>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"/>
+        <path d="m21 21-4.3-4.3"/>
+        <path d="M8 11h6"/>
+      </svg>
+      <h3 id="empty-title">Aucun produit trouvé</h3>
+      <p id="empty-desc" style="color:var(--ink-muted);font-size:0.85rem;margin-top:4px;">Essayez de modifier votre recherche ou de désactiver certains filtres.</p>
+      <button type="button" id="btn-reset" style="margin-top:12px;padding:6px 14px;background:var(--primary);color:#fff;border:none;border-radius:var(--radius-sm);cursor:pointer;font-family:inherit;font-size:0.82rem;font-weight:600;">Réinitialiser les filtres</button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="catalog-foot">
+      <div>
+        <strong>OZone Store</strong> &mdash; Mat&eacute;riel neuf sous emballage d'origine &agrave; Bonanjo.
+      </div>
+      <div>
+        WhatsApp : <a href="https://wa.me/17572755446" target="_blank" rel="noopener noreferrer">+1 (757) 275-5446</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    /* OZone Store - Lightweight, Read-Only Public Catalog */
+    const WA_NUMBER = "17572755446";
+
+    const STRINGS = {
+      fr: {
+        sub: "Produits neufs, sous emballage, disponibles à Bonanjo. Cherchez, triez, puis écrivez-nous pour ce qui vous intéresse.",
+        note: "<strong>Neuf & Scellé.</strong> Chaque article est non ouvert, dans son emballage d'origine.",
+        loc_city: "Bonanjo",
+        loc_area: ", Douala",
+        guar: "Neuf, non ouvert",
+        hint: "Disponibilité à confirmer sur WhatsApp",
+        all: "Tout",
+        bononly: "À Bonanjo seulement",
+        instock: "En stock seulement",
+        ph: "Rechercher...",
+        count: n => n + (n === 1 ? " article" : " articles"),
+        ask: "WhatsApp",
+        gone: "Épuisé",
+        cap: "Image illustrative",
+        bon: "Bonanjo",
+        qty: n => n + " dispo",
+        xaf: "FCFA",
+        rq: "Prix sur demande",
+        none_title: "Aucun produit trouvé",
+        none_desc: "Essayez de modifier votre recherche ou de désactiver certains filtres.",
+        reset: "Réinitialiser les filtres",
+        load_err: "Impossible de charger le catalogue pour le moment. Contactez-nous directement sur WhatsApp :",
+        msg: (t, id) => "Bonjour, je suis intéressé(e) par : " + t + " (réf " + id + ")",
+        sort: {
+          rec: "Recommandé",
+          pa: "Prix croissant",
+          pd: "Prix décroissant",
+          az: "Nom : A à Z",
+          za: "Nom : Z à A"
+        },
+        cats: {
+          "Water heaters": "Chauffe-eau",
+          "Cooktops & kitchen": "Cuisine",
+          "Bath & shower": "Salle de bain",
+          "Water & pumps": "Eau & pompes",
+          "Smart locks & security": "Serrures & sécurité",
+          "Solar": "Solaire",
+          "Lighting": "Éclairage",
+          "Furniture & home": "Maison & meubles",
+          "Tools & electronics": "Outils & électronique"
+        }
+      },
+      en: {
+        sub: "New, sealed-in-box products available in Bonanjo. Search, sort, then message us about what you want.",
+        note: "<strong>New & sealed.</strong> Every item is unopened, in its original box.",
+        loc_city: "Bonanjo",
+        loc_area: ", Douala",
+        guar: "New, unopened",
+        hint: "Availability confirmed on WhatsApp",
+        all: "All",
+        bononly: "In Bonanjo only",
+        instock: "In stock only",
+        ph: "Search...",
+        count: n => n + (n === 1 ? " item" : " items"),
+        ask: "WhatsApp",
+        gone: "Out of stock",
+        cap: "Illustrative image",
+        bon: "Bonanjo",
+        qty: n => n + " available",
+        xaf: "FCFA",
+        rq: "Price on request",
+        none_title: "No products found",
+        none_desc: "Try adjusting your search terms or turning off specific filters.",
+        reset: "Reset filters",
+        load_err: "Unable to load the catalog at this time. Please contact us directly on WhatsApp:",
+        msg: (t, id) => "Hello, I am interested in: " + t + " (ref " + id + ")",
+        sort: {
+          rec: "Recommended",
+          pa: "Price: Low to High",
+          pd: "Price: High to Low",
+          az: "Name: A to Z",
+          za: "Name: Z to A"
+        },
+        cats: {
+          "Water heaters": "Water heaters",
+          "Cooktops & kitchen": "Cooktops & kitchen",
+          "Bath & shower": "Bath & shower",
+          "Water & pumps": "Water & pumps",
+          "Smart locks & security": "Smart locks & security",
+          "Solar": "Solar",
+          "Lighting": "Lighting",
+          "Furniture & home": "Furniture & home",
+          "Tools & electronics": "Tools & electronics"
+        }
+      }
+    };
+
+    let ITEMS = [];
+    let currentLang = "fr";
+    let activeCategory = "all";
+    let activeSort = "rec";
+    let categoriesList = [];
+
+    // Language preference handling - wrapped safely in try/catch
+    try {
+      const stored = localStorage.getItem("oz-lang");
+      if (stored === "fr" || stored === "en") currentLang = stored;
+    } catch (e) {}
+
+    const $ = id => document.getElementById(id);
+
+    function escapeHtml(str) {
+      if (!str) return "";
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function catName(catKey) {
+      const T = STRINGS[currentLang];
+      return (T.cats && T.cats[catKey]) || catKey;
+    }
+
+    function itemTitle(item) {
+      return (currentLang === "fr" ? (item.tf || item.te) : (item.te || item.tf)) || "";
+    }
+
+    function itemDesc(item) {
+      return (currentLang === "fr" ? (item.df || item.de) : (item.de || item.df)) || "";
+    }
+
+    function isItemInStock(item) {
+      return (item.stock !== false) && ((item.qty == null) || item.qty > 0);
+    }
+
+    function formatPrice(xaf) {
+      if (xaf == null) return null;
+      return Number(xaf).toLocaleString(currentLang === "fr" ? "fr-FR" : "en-US");
+    }
+
+    function buildCategoryList() {
+      const counts = {};
+      for (const item of ITEMS) {
+        if (!item.cat) continue;
+        counts[item.cat] = (counts[item.cat] || 0) + 1;
+      }
+      categoriesList = Object.keys(counts).sort((a, b) => counts[b] - counts[a]);
+    }
+
+    function sortItems(list) {
+      const bySku = (a, b) => (a.id < b.id ? -1 : a.id > b.id ? 1 : 0);
+      const loc = currentLang === "fr" ? "fr" : "en";
+      const priceSort = (a, b, dir) => {
+        const x = a.xaf, y = b.xaf;
+        if (x == null && y == null) return bySku(a, b);
+        if (x == null) return 1;
+        if (y == null) return -1;
+        return dir * (x - y) || bySku(a, b);
+      };
+
+      const stockSort = (a, b) => {
+        const aOk = isItemInStock(a), bOk = isItemInStock(b);
+        if (aOk && !bOk) return -1;
+        if (!aOk && bOk) return 1;
+        return 0;
+      };
+
+      const sorters = {
+        rec: (a, b) => stockSort(a, b) || bySku(a, b),
+        pa: (a, b) => stockSort(a, b) || priceSort(a, b, 1),
+        pd: (a, b) => stockSort(a, b) || priceSort(a, b, -1),
+        az: (a, b) => stockSort(a, b) || itemTitle(a).localeCompare(itemTitle(b), loc),
+        za: (a, b) => stockSort(a, b) || itemTitle(b).localeCompare(itemTitle(a), loc)
+      };
+
+      return list.slice().sort(sorters[activeSort] || sorters.rec);
+    }
+
+    function filterItems() {
+      const query = ($("q").value || "").trim().toLowerCase();
+      const inStockOnly = $("instock").checked;
+      const bonOnly = $("bon").checked;
+
+      return ITEMS.filter(item => {
+        if (inStockOnly && !isItemInStock(item)) return false;
+        if (bonOnly && !item.bon) return false;
+        if (query) {
+          const t = itemTitle(item).toLowerCase();
+          const d = itemDesc(item).toLowerCase();
+          const c = (item.cat || "").toLowerCase();
+          const s = (item.id || "").toLowerCase();
+          if (!t.includes(query) && !d.includes(query) && !c.includes(query) && !s.includes(query)) {
+            return false;
+          }
+        }
+        return true;
+      });
+    }
+
+    function renderCategoryChips() {
+      const container = $("chips");
+      const T = STRINGS[currentLang];
+      const baseList = filterItems();
+
+      const counts = { all: baseList.length };
+      for (const item of baseList) {
+        if (item.cat) counts[item.cat] = (counts[item.cat] || 0) + 1;
+      }
+
+      const chips = [{ key: "all", label: T.all, count: counts.all || 0 }];
+      for (const cat of categoriesList) {
+        chips.push({ key: cat, label: catName(cat), count: counts[cat] || 0 });
+      }
+
+      container.innerHTML = chips.map(c => `
+        <button type="button" class="chip" data-cat="${escapeHtml(c.key)}" aria-pressed="${c.key === activeCategory}">
+          <span>${escapeHtml(c.label)}</span>
+          <span class="chip-count">${c.count}</span>
+        </button>
+      `).join("");
+
+      container.querySelectorAll(".chip").forEach(btn => {
+        btn.addEventListener("click", () => {
+          activeCategory = btn.dataset.cat;
+          renderStore();
+        });
+      });
+
+      return baseList;
+    }
+
+    function renderCard(item, index) {
+      const T = STRINGS[currentLang];
+      const ok = isItemInStock(item);
+      const title = itemTitle(item);
+      const desc = itemDesc(item);
+      const categoryLabel = catName(item.cat);
+      const isFirstRow = index < 2; // Priority load first row on 2-col phones
+      const loadingAttr = isFirstRow ? 'decoding="async" fetchpriority="high"' : 'loading="lazy" decoding="async"';
+
+      const initial = (item.id || "OZ").slice(0, 3);
+      const waText = encodeURIComponent(T.msg(title, item.id));
+      const waUrl = `https://wa.me/${WA_NUMBER}?text=${waText}`;
+
+      let badgesHtml = '<div class="badge-rack">';
+      if (item.bon) {
+        badgesHtml += `<span class="badge badge-bon">${escapeHtml(T.bon)}</span>`;
+      }
+      if (!ok) {
+        badgesHtml += `<span class="badge badge-out">${escapeHtml(T.gone)}</span>`;
+      } else if (item.qty != null && item.qty > 0) {
+        badgesHtml += `<span class="badge badge-qty">${escapeHtml(T.qty(item.qty))}</span>`;
+      }
+      badgesHtml += '</div>';
+
+      const photoHtml = `
+        <div class="photo-box">
+          ${badgesHtml}
+          <div class="photo-placeholder" aria-hidden="true">${escapeHtml(initial)}</div>
+          <img src="img/${escapeHtml(item.id)}.jpg"
+               alt="${escapeHtml(title)}"
+               width="640"
+               height="480"
+               ${loadingAttr}
+               onerror="this.style.display='none';">
+          <span class="photo-cap">${escapeHtml(T.cap)}</span>
+        </div>
+      `;
+
+      let priceHtml = '';
+      if (item.xaf != null) {
+        priceHtml = `<div class="card-price">${formatPrice(item.xaf)} <span>${escapeHtml(T.xaf)}</span></div>`;
+      } else {
+        priceHtml = `<div class="card-price price-rq">${escapeHtml(T.rq)}</div>`;
+      }
+
+      const waSvg = `<svg viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.698.067-2.001-.476-1.554-.648-2.552-2.227-2.629-2.33-.077-.104-.633-.843-.633-1.608 0-.766.4-.1.141.547-.145.147-.32.32-.472.48-.152.16-.312.18-.573.05-.26-.13-1.1-.405-2.096-1.292-.774-.69-1.297-1.543-1.449-1.803-.152-.26-.016-.401.114-.53.117-.117.26-.304.39-.456.13-.152.173-.26.26-.434.087-.174.043-.326-.022-.456-.065-.13-.586-1.413-.804-1.935-.212-.509-.427-.44-.586-.448h-.502c-.174 0-.456.065-.695.326-.239.26-.913.892-.913 2.174 0 1.282.934 2.521 1.064 2.695.13.174 1.838 2.807 4.453 3.935 2.615 1.128 2.615.752 3.084.708.469-.044 1.512-.619 1.727-1.217z"/></svg>`;
+
+      const card = document.createElement("article");
+      card.className = "card" + (ok ? "" : " out");
+      card.innerHTML = `
+        ${photoHtml}
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-cat">${escapeHtml(categoryLabel)}</span>
+            <span class="card-sku">${escapeHtml(item.id)}</span>
+          </div>
+          <h2 class="card-title">${escapeHtml(title)}</h2>
+          ${desc ? `<p class="card-desc">${escapeHtml(desc)}</p>` : ''}
+          <div class="card-price-wrap">${priceHtml}</div>
+          <div class="card-action">
+            <a class="btn-wa" href="${waUrl}" target="_blank" rel="noopener noreferrer">
+              ${waSvg}
+              <span>${escapeHtml(T.ask)}</span>
+            </a>
+          </div>
+        </div>
+      `;
+      return card;
+    }
+
+    function renderStore() {
+      const T = STRINGS[currentLang];
+      document.documentElement.lang = currentLang;
+
+      // Update static header and trust text safely
+      $("header-sub").textContent = T.sub;
+      $("trust-note").innerHTML = T.note;
+      
+      // Fix raw tag bug safely without unsafe string interpolation
+      const locEl = $("trust-loc");
+      if (locEl) {
+        locEl.textContent = "";
+        const strong = document.createElement("strong");
+        strong.textContent = T.loc_city;
+        locEl.appendChild(strong);
+        locEl.appendChild(document.createTextNode(T.loc_area));
+      }
+
+      $("trust-guar").textContent = T.guar;
+      $("status-hint").textContent = T.hint;
+      $("label-instock").textContent = T.instock;
+      $("label-bon").textContent = T.bononly;
+
+      $("q").placeholder = T.ph;
+      $("search-clear").hidden = !$("q").value;
+
+      const sortEl = $("sort");
+      sortEl.innerHTML = Object.keys(T.sort)
+        .map(k => `<option value="${k}"${k === activeSort ? " selected" : ""}>${escapeHtml(T.sort[k])}</option>`)
+        .join("");
+
+      $("l-fr").setAttribute("aria-pressed", currentLang === "fr");
+      $("l-en").setAttribute("aria-pressed", currentLang === "en");
+
+      const baseList = renderCategoryChips();
+      const filtered = baseList.filter(i => activeCategory === "all" || i.cat === activeCategory);
+      const displayList = sortItems(filtered);
+
+      $("count").innerHTML = `<strong>${displayList.length}</strong> ${escapeHtml(T.count(displayList.length).replace(/^\d+\s*/, ''))}`;
+
+      const gridEl = $("grid");
+      const emptyEl = $("empty");
+
+      if (displayList.length === 0) {
+        emptyEl.hidden = false;
+        $("empty-title").textContent = T.none_title;
+        $("empty-desc").textContent = T.none_desc;
+        $("btn-reset").textContent = T.reset;
+        gridEl.innerHTML = "";
+        return;
+      }
+
+      emptyEl.hidden = true;
+      gridEl.innerHTML = "";
+
+      // Safe per-card rendering: error in one item never breaks the other cards
+      displayList.forEach((item, idx) => {
+        try {
+          const card = renderCard(item, idx);
+          gridEl.appendChild(card);
+        } catch (err) {
+          console.error("Error rendering item " + item.id, err);
+        }
+      });
+    }
+
+    function showLoadError() {
+      const T = STRINGS[currentLang];
+      const container = $("load-error-container");
+      container.hidden = false;
+      container.innerHTML = `
+        <div class="load-error-box">
+          <p>${escapeHtml(T.load_err)}</p>
+          <a class="btn-wa-header" href="https://wa.me/${WA_NUMBER}" target="_blank" rel="noopener noreferrer">
+            <svg style="width:14px;height:14px;fill:currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.698.067-2.001-.476-1.554-.648-2.552-2.227-2.629-2.33-.077-.104-.633-.843-.633-1.608 0-.766.4-.1.141.547-.145.147-.32.32-.472.48-.152.16-.312.18-.573.05-.26-.13-1.1-.405-2.096-1.292-.774-.69-1.297-1.543-1.449-1.803-.152-.26-.016-.401.114-.53.117-.117.26-.304.39-.456.13-.152.173-.26.26-.434.087-.174.043-.326-.022-.456-.065-.13-.586-1.413-.804-1.935-.212-.509-.427-.44-.586-.448h-.502c-.174 0-.456.065-.695.326-.239.26-.913.892-.913 2.174 0 1.282.934 2.521 1.064 2.695.13.174 1.838 2.807 4.453 3.935 2.615 1.128 2.615.752 3.084.708.469-.044 1.512-.619 1.727-1.217z"/></svg>
+            <span>WhatsApp +1 (757) 275-5446</span>
+          </a>
+        </div>
+      `;
+      $("grid").innerHTML = "";
+    }
+
+    // Event Listeners for Filters
+    $("q").addEventListener("input", () => {
+      activeCategory = "all";
+      renderStore();
+    });
+
+    $("search-clear").addEventListener("click", () => {
+      $("q").value = "";
+      renderStore();
+      $("q").focus();
+    });
+
+    $("sort").addEventListener("change", e => {
+      activeSort = e.target.value;
+      renderStore();
+    });
+
+    $("instock").addEventListener("change", () => renderStore());
+    $("bon").addEventListener("change", () => renderStore());
+
+    $("btn-reset").addEventListener("click", () => {
+      $("q").value = "";
+      $("instock").checked = false;
+      $("bon").checked = false;
+      activeCategory = "all";
+      activeSort = "rec";
+      renderStore();
+    });
+
+    for (const langKey of ["fr", "en"]) {
+      $("l-" + langKey).addEventListener("click", () => {
+        currentLang = langKey;
+        try { localStorage.setItem("oz-lang", langKey); } catch (e) {}
+        renderStore();
+      });
+    }
+
+    // Load items.json on every page load
+    fetch("items.json", { cache: "no-cache" })
+      .then(res => {
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        return res.json();
+      })
+      .then(data => {
+        if (Array.isArray(data) && data.length) {
+          ITEMS = data;
+          buildCategoryList();
+          renderStore();
+        } else {
+          showLoadError();
+        }
+      })
+      .catch(err => {
+        console.error("Failed to load items.json:", err);
+        showLoadError();
+      });
+  </script>
+</body>
+</html>

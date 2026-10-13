@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'unsafe-inline'; img-src 'self' data: blob:; connect-src https://api.github.com; base-uri 'none'; form-action 'none';">
+  <meta name="robots" content="noindex,nofollow">
+  <title>OZone Admin</title>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --border: #e2e8f0;
+      --text: #0f172a;
+      --muted: #64748b;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --primary-subtle: #eff6ff;
+      --danger: #dc2626;
+      --danger-hover: #b91c1c;
+      --danger-subtle: #fef2f2;
+      --success: #16a34a;
+      --success-hover: #15803d;
+      --success-subtle: #f0fdf4;
+      --accent: #d97706;
+      --accent-subtle: #fffbeb;
+      --radius: 8px;
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b0f19;
+        --surface: #131b2e;
+        --border: #1e293b;
+        --text: #f8fafc;
+        --muted: #94a3b8;
+        --primary: #3b82f6;
+        --primary-hover: #60a5fa;
+        --primary-subtle: #1e293b;
+        --danger: #ef4444;
+        --danger-hover: #f87171;
+        --danger-subtle: #450a0a;
+        --success: #22c55e;
+        --success-hover: #4ade80;
+        --success-subtle: #052e16;
+        --accent: #f59e0b;
+        --accent-subtle: #3d2402;
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 96px;
+    }
+    .brand-zone { color: var(--primary); }
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 40;
+    }
+    .header-left, .header-right { display: flex; align-items: center; gap: 12px; }
+    .brand-title { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.02em; }
+    .badge-private {
+      background: var(--border);
+      color: var(--muted);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      padding: 2px 7px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+    .repo-tag {
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-family: monospace;
+      background: var(--bg);
+      padding: 4px 8px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+    button, input, select, textarea {
+      font-family: inherit;
+      font-size: 0.9rem;
+      color: inherit;
+    }
+    button {
+      cursor: pointer;
+      border: 1px solid transparent;
+      border-radius: var(--radius);
+      padding: 8px 14px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: background-color 0.15s, border-color 0.15s;
+      min-height: 40px;
+    }
+    button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 1px;
+    }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-primary:hover:not(:disabled) { background: var(--primary-hover); }
+    .btn-secondary { background: var(--surface); border-color: var(--border); color: var(--text); }
+    .btn-secondary:hover:not(:disabled) { background: var(--border); }
+    .btn-danger { background: var(--danger-subtle); border-color: var(--danger); color: var(--danger); }
+    .btn-danger:hover:not(:disabled) { background: var(--danger); color: #fff; }
+    .btn-sm { min-height: 32px; padding: 4px 10px; font-size: 0.8rem; }
+    button:disabled { opacity: 0.5; cursor: not-allowed; }
+    #auth-view {
+      max-width: 440px;
+      width: calc(100% - 32px);
+      margin: 60px auto;
+      padding: 24px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+    .auth-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 8px; }
+    .auth-subtitle { font-size: 0.85rem; color: var(--muted); margin-bottom: 20px; }
+    .form-group { margin-bottom: 16px; display: flex; flex-direction: column; gap: 6px; }
+    .form-group label { font-size: 0.82rem; font-weight: 600; color: var(--muted); }
+    .form-control {
+      width: 100%;
+      min-height: 40px;
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--bg);
+      color: var(--text);
+    }
+    .form-control:focus { border-color: var(--primary); }
+    .auth-info {
+      font-size: 0.78rem;
+      color: var(--muted);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 10px;
+      margin-top: 14px;
+      line-height: 1.4;
+    }
+    .alert-banner {
+      padding: 10px 16px;
+      border-radius: var(--radius);
+      font-size: 0.85rem;
+      margin-bottom: 16px;
+      display: none;
+    }
+    .alert-banner.error { display: block; background: var(--danger-subtle); border: 1px solid var(--danger); color: var(--danger); }
+    .alert-banner.success { display: block; background: var(--success-subtle); border: 1px solid var(--success); color: var(--success); }
+    #main-view {
+      display: none;
+      width: 100%;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+    .summary-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .summary-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px 16px;
+      display: flex;
+      flex-direction: column;
+    }
+    .summary-label {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+    .summary-val { font-size: 1.6rem; font-weight: 700; margin-top: 2px; }
+    .toolbar-container {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px;
+      margin-bottom: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .toolbar-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+    .search-input { flex: 1; min-width: 220px; }
+    .filter-select { min-width: 150px; }
+    .filter-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip-btn {
+      min-height: 32px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .chip-btn.active { background: var(--primary); border-color: var(--primary); color: #fff; }
+    .chip-btn.active .chip-count { background: rgba(255,255,255,0.25); color: #fff; }
+    .chip-count {
+      background: var(--border);
+      color: var(--text);
+      border-radius: 10px;
+      padding: 1px 6px;
+      font-size: 0.72rem;
+      margin-left: 4px;
+    }
+    .catalog-wrapper {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow-x: auto;
+    }
+    .catalog-table { width: 100%; border-collapse: collapse; text-align: left; }
+    .catalog-table th {
+      background: var(--bg);
+      padding: 10px 14px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      border-bottom: 1px solid var(--border);
+    }
+    .catalog-row { border-bottom: 1px solid var(--border); transition: background-color 0.1s; }
+    .catalog-row:hover { background-color: var(--bg); }
+    .catalog-row.is-changed { border-left: 4px solid var(--accent); background-color: var(--accent-subtle); }
+    .catalog-row td { padding: 10px 14px; vertical-align: middle; font-size: 0.88rem; }
+    .col-thumb { width: 80px; }
+    .thumb-box {
+      width: 60px;
+      height: 45px;
+      background: var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .thumb-img { width: 100%; height: 100%; object-fit: cover; }
+    .thumb-placeholder { font-size: 0.65rem; color: var(--muted); font-weight: 700; }
+    .thumb-actions { margin-top: 4px; }
+    .item-id {
+      font-family: monospace;
+      font-weight: 700;
+      font-size: 0.82rem;
+      color: var(--primary);
+      background: var(--primary-subtle);
+      padding: 2px 6px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 2px;
+    }
+    .item-title-en { font-weight: 600; color: var(--text); }
+    .item-title-fr { font-size: 0.8rem; color: var(--muted); margin-top: 1px; }
+    .item-category-tag { font-size: 0.75rem; color: var(--muted); display: inline-block; margin-top: 2px; }
+    .btn-stock { min-height: 32px; padding: 4px 10px; font-size: 0.78rem; border-radius: 20px; white-space: nowrap; }
+    .btn-stock.in-stock { background: var(--success-subtle); border-color: var(--success); color: var(--success); }
+    .btn-stock.out-of-stock { background: var(--danger-subtle); border-color: var(--danger); color: var(--danger); }
+    .input-qty { width: 64px; min-height: 34px; padding: 4px 6px; border: 1px solid var(--border); border-radius: 4px; background: var(--bg); text-align: center; }
+    .input-price { width: 104px; min-height: 34px; padding: 4px 8px; border: 1px solid var(--border); border-radius: 4px; background: var(--bg); }
+    .checkbox-bon { width: 18px; height: 18px; cursor: pointer; accent-color: var(--primary); }
+    .detail-row { background: var(--bg); border-bottom: 1px solid var(--border); }
+    .detail-container { padding: 16px; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+    .detail-header {
+      grid-column: 1 / -1;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 6px;
+    }
+    @media (max-width: 700px) {
+      .catalog-table, .catalog-table thead, .catalog-table tbody, .catalog-table th, .catalog-table td, .catalog-table tr { display: block; }
+      .catalog-table thead { display: none; }
+      .catalog-row { padding: 12px; margin-bottom: 8px; border: 1px solid var(--border); border-radius: var(--radius); }
+      .catalog-row td { padding: 6px 0; display: flex; justify-content: space-between; align-items: center; }
+      .catalog-row td::before { content: attr(data-label); font-size: 0.75rem; font-weight: 700; color: var(--muted); text-transform: uppercase; }
+      .catalog-row td.col-info { display: block; }
+      .catalog-row td.col-info::before { display: none; }
+      .catalog-row td.col-thumb { display: flex; justify-content: flex-start; gap: 12px; width: 100%; }
+      .catalog-row td.col-thumb::before { display: none; }
+    }
+    .sticky-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--surface);
+      border-top: 2px solid var(--accent);
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 -4px 16px rgba(0,0,0,0.1);
+      z-index: 50;
+      transform: translateY(100%);
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .sticky-bar.visible { transform: translateY(0); }
+    .sticky-msg { font-weight: 600; display: flex; align-items: center; gap: 8px; }
+    .sticky-actions { display: flex; gap: 10px; }
+    #hidden-photo-input { display: none; }
+  </style>
+</head>
+<body>
+  <input type="file" id="hidden-photo-input" accept="image/*" aria-label="Upload item image">
+  <datalist id="category-datalist"></datalist>
+
+  <header>
+    <div class="header-left">
+      <span class="brand-title">O<span class="brand-zone">Zone</span> Admin</span>
+      <span class="badge-private">PRIVATE</span>
+    </div>
+    <div class="header-right" id="header-auth-controls" style="display: none;">
+      <span class="repo-tag" id="current-repo-tag"></span>
+      <button type="button" class="btn-secondary btn-sm" id="btn-sign-out">Sign out</button>
+    </div>
+  </header>
+
+  <main id="auth-view">
+    <h1 class="auth-title">O<span class="brand-zone">Zone</span> Catalog Login</h1>
+    <p class="auth-subtitle">Manage store catalog directly through GitHub API.</p>
+    <div id="auth-alert" class="alert-banner"></div>
+    <form id="auth-form" onsubmit="event.preventDefault(); handleConnect();">
+      <div class="form-group">
+        <label for="repo-input">GitHub Repository (owner/repo)</label>
+        <input type="text" id="repo-input" class="form-control" placeholder="e.g. syllex/ozone-store" required autocomplete="off" spellcheck="false">
+      </div>
+      <div class="form-group">
+        <label for="branch-input">Branch</label>
+        <input type="text" id="branch-input" class="form-control" value="main" required autocomplete="off" spellcheck="false">
+      </div>
+      <div class="form-group">
+        <label for="token-input">Personal Access Token (Fine-grained)</label>
+        <input type="password" id="token-input" class="form-control" placeholder="github_pat_..." required autocomplete="off">
+      </div>
+      <button type="submit" id="btn-connect" class="btn-primary" style="width: 100%; margin-top: 8px;">Connect to Repository</button>
+      <div class="auth-info">
+        <strong>Fine-grained PAT requirements:</strong><br>
+        1. Limited to this repository.<br>
+        2. Permission: <code>Contents: Read and write</code>.<br>
+        3. Expiry: 90 days recommended.<br>
+        Saved in <code>sessionStorage</code> only. Never logged or sent outside <code>api.github.com</code>.
+      </div>
+    </form>
+  </main>
+
+  <main id="main-view">
+    <div id="main-alert" class="alert-banner"></div>
+    <section class="summary-strip" aria-label="Catalog summary">
+      <div class="summary-card">
+        <span class="summary-label">Total Items</span>
+        <span class="summary-val" id="stat-total">0</span>
+      </div>
+      <div class="summary-card">
+        <span class="summary-label">In Stock</span>
+        <span class="summary-val" id="stat-instock" style="color: var(--success);">0</span>
+      </div>
+      <div class="summary-card">
+        <span class="summary-label">With Price</span>
+        <span class="summary-val" id="stat-priced">0</span>
+      </div>
+      <div class="summary-card">
+        <span class="summary-label">With Photo</span>
+        <span class="summary-val" id="stat-photo">0</span>
+      </div>
+    </section>
+
+    <section class="toolbar-container" aria-label="Catalog toolbar">
+      <div class="toolbar-row">
+        <input type="search" id="search-input" class="form-control search-input" placeholder="Search reference or title..." aria-label="Search items">
+        <select id="category-filter" class="form-control filter-select" aria-label="Filter by category">
+          <option value="">All categories</option>
+        </select>
+        <select id="sort-select" class="form-control filter-select" aria-label="Sort items">
+          <option value="ref-asc">Reference (OZ-001 &uarr;)</option>
+          <option value="ref-desc">Reference (OZ-999 &darr;)</option>
+          <option value="title-asc">Title EN (A &rarr; Z)</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="stock-out">Out of stock first</option>
+        </select>
+        <button type="button" class="btn-primary" id="btn-add-item">+ Add item</button>
+        <button type="button" class="btn-secondary" id="btn-download-backup">Download backup</button>
+      </div>
+      <div class="toolbar-row">
+        <div class="filter-chips" role="group" aria-label="Filter chips">
+          <button type="button" class="chip-btn active" data-filter="all">All <span class="chip-count" id="count-chip-all">0</span></button>
+          <button type="button" class="chip-btn" data-filter="outofstock">Out of stock <span class="chip-count" id="count-chip-outofstock">0</span></button>
+          <button type="button" class="chip-btn" data-filter="noprice">No price <span class="chip-count" id="count-chip-noprice">0</span></button>
+          <button type="button" class="chip-btn" data-filter="nophoto">No image <span class="chip-count" id="count-chip-nophoto">0</span></button>
+          <button type="button" class="chip-btn" data-filter="changed">Changed <span class="chip-count" id="count-chip-changed">0</span></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="catalog-wrapper" aria-label="Catalog table">
+      <table class="catalog-table">
+        <thead>
+          <tr>
+            <th class="col-thumb">Photo</th>
+            <th>Item Details</th>
+            <th>Stock</th>
+            <th>Qty</th>
+            <th>Price (FCFA)</th>
+            <th>Bonanjo</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="catalog-tbody"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <aside class="sticky-bar" id="sticky-bar" aria-label="Unsaved changes bar">
+    <div class="sticky-msg">
+      <span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:var(--accent);"></span>
+      <span id="changed-items-text">0 items changed</span>
+    </div>
+    <div class="sticky-actions">
+      <button type="button" class="btn-secondary" id="btn-discard-changes">Discard changes</button>
+      <button type="button" class="btn-primary" id="btn-save-github">Save to GitHub</button>
+    </div>
+  </aside>
+
+  <script>
+    'use strict';
+    let ghToken = '';
+    let ghRepo = '';
+    let ghBranch = 'main';
+    let fileSha = '';
+    let items = [];
+    const originalSnapshotMap = new Map();
+    const photoTsMap = new Map();
+    const openDetailRowIds = new Set();
+    let currentFilterChip = 'all';
+    let targetUploadItemId = null;
+
+    const REPO_REGEX = /^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/;
+    const BRANCH_REGEX = /^[A-Za-z0-9_./-]+$/;
+    const ID_REGEX = /^OZ-\d{3,5}$/;
+
+    const authView = document.getElementById('auth-view');
+    const mainView = document.getElementById('main-view');
+    const authAlert = document.getElementById('auth-alert');
+    const mainAlert = document.getElementById('main-alert');
+    const repoInput = document.getElementById('repo-input');
+    const branchInput = document.getElementById('branch-input');
+    const tokenInput = document.getElementById('token-input');
+    const btnConnect = document.getElementById('btn-connect');
+    const btnSignOut = document.getElementById('btn-sign-out');
+    const headerAuthControls = document.getElementById('header-auth-controls');
+    const currentRepoTag = document.getElementById('current-repo-tag');
+
+    const searchInput = document.getElementById('search-input');
+    const categoryFilter = document.getElementById('category-filter');
+    const sortSelect = document.getElementById('sort-select');
+    const categoryDatalist = document.getElementById('category-datalist');
+    const catalogTbody = document.getElementById('catalog-tbody');
+    const hiddenPhotoInput = document.getElementById('hidden-photo-input');
+
+    const statTotal = document.getElementById('stat-total');
+    const statInstock = document.getElementById('stat-instock');
+    const statPriced = document.getElementById('stat-priced');
+    const statPhoto = document.getElementById('stat-photo');
+
+    const countChipAll = document.getElementById('count-chip-all');
+    const countChipOutofstock = document.getElementById('count-chip-outofstock');
+    const countChipNoprice = document.getElementById('count-chip-noprice');
+    const countChipNophoto = document.getElementById('count-chip-nophoto');
+    const countChipChanged = document.getElementById('count-chip-changed');
+
+    const stickyBar = document.getElementById('sticky-bar');
+    const changedItemsText = document.getElementById('changed-items-text');
+    const btnSaveGithub = document.getElementById('btn-save-github');
+    const btnDiscardChanges = document.getElementById('btn-discard-changes');
+    const btnAddItem = document.getElementById('btn-add-item');
+    const btnDownloadBackup = document.getElementById('btn-download-backup');
+
+    function utf8ToBase64(str) {
+      const bytes = new TextEncoder().encode(str);
+      const CHUNK = 0x8000;
+      let binary = '';
+      for (let i = 0; i < bytes.length; i += CHUNK) {
+        binary += String.fromCharCode.apply(null, bytes.subarray(i, i + CHUNK));
+      }
+      return btoa(binary);
+    }
+
+    function base64ToUtf8(b64) {
+      const clean = b64.replace(/\s+/g, '');
+      const binary = atob(clean);
+      const bytes = new Uint8Array(binary.length);
+      for (let i = 0; i < binary.length; i++) {
+        bytes[i] = binary.charCodeAt(i);
+      }
+      return new TextDecoder('utf-8').decode(bytes);
+    }
+
+    function showAlert(elem, msg, type = 'error') {
+      elem.textContent = msg;
+      elem.className = 'alert-banner ' + type;
+      if (type === 'success') {
+        setTimeout(() => {
+          if (elem.textContent === msg) elem.className = 'alert-banner';
+        }, 6000);
+      }
+    }
+
+    function clearAlert(elem) {
+      elem.textContent = '';
+      elem.className = 'alert-banner';
+    }
+
+    function isItemChanged(item) {
+      const orig = originalSnapshotMap.get(item.id);
+      if (!orig) return true;
+      return JSON.stringify(item) !== orig;
+    }
+
+    function getChangedItems() {
+      return items.filter(isItemChanged);
+    }
+
+    function updateChangeUI() {
+      const changed = getChangedItems();
+      const count = changed.length;
+      countChipChanged.textContent = count;
+      if (count > 0) {
+        stickyBar.classList.add('visible');
+        changedItemsText.textContent = count + (count === 1 ? ' item changed' : ' items changed');
+      } else {
+        stickyBar.classList.remove('visible');
+      }
+      updateSummaryStats();
+    }
+
+    function updateSummaryStats() {
+      statTotal.textContent = items.length;
+      statInstock.textContent = items.filter(i => i.stock).length;
+      statPriced.textContent = items.filter(i => i.xaf !== null && i.xaf !== undefined).length;
+      statPhoto.textContent = items.filter(i => i.photo).length;
+
+      countChipAll.textContent = items.length;
+      countChipOutofstock.textContent = items.filter(i => !i.stock).length;
+      countChipNoprice.textContent = items.filter(i => i.xaf === null || i.xaf === undefined).length;
+      countChipNophoto.textContent = items.filter(i => !i.photo).length;
+      countChipChanged.textContent = getChangedItems().length;
+    }
+
+    function refreshCategories() {
+      const cats = Array.from(new Set(items.map(i => i.cat).filter(c => c && c.trim()))).sort();
+      const curSelected = categoryFilter.value;
+      while (categoryFilter.options.length > 1) categoryFilter.remove(1);
+      cats.forEach(c => {
+        const opt = document.createElement('option');
+        opt.value = c;
+        opt.textContent = c;
+        categoryFilter.appendChild(opt);
+      });
+      categoryFilter.value = curSelected;
+
+      while (categoryDatalist.firstChild) categoryDatalist.removeChild(categoryDatalist.firstChild);
+      cats.forEach(c => {
+        const opt = document.createElement('option');
+        opt.value = c;
+        categoryDatalist.appendChild(opt);
+      });
+    }
+
+    async function ghFetch(url, options = {}) {
+      const headers = {
+        'Accept': 'application/vnd.github+json',
+        'Authorization': 'Bearer ' + ghToken,
+        ...(options.headers || {})
+      };
+      return fetch(url, { ...options, headers });
+    }
+
+    async function handleConnect() {
+      clearAlert(authAlert);
+      const repo = repoInput.value.trim();
+      const branch = branchInput.value.trim();
+      const token = tokenInput.value.trim();
+
+      if (!REPO_REGEX.test(repo)) {
+        showAlert(authAlert, 'Invalid repository format. Please use "owner/repository".');
+        return;
+      }
+      if (!BRANCH_REGEX.test(branch)) {
+        showAlert(authAlert, 'Invalid branch name.');
+        return;
+      }
+      if (token.length < 20) {
+        showAlert(authAlert, 'Token must be at least 20 characters long.');
+        return;
+      }
+
+      btnConnect.disabled = true;
+      btnConnect.textContent = 'Connecting...';
+
+      try {
+        const repoRes = await fetch('https://api.github.com/repos/' + repo, {
+          headers: {
+            'Accept': 'application/vnd.github+json',
+            'Authorization': 'Bearer ' + token
+          }
+        });
+
+        if (repoRes.status === 401) {
+          showAlert(authAlert, 'GitHub rejected the token, check it and its expiry date.');
+          return;
+        }
+        if (repoRes.status === 404) {
+          showAlert(authAlert, 'Repository not found. Check repository spelling.');
+          return;
+        }
+        if (repoRes.status === 403) {
+          showAlert(authAlert, 'Permission denied or GitHub API rate limit reached.');
+          return;
+        }
+        if (!repoRes.ok) {
+          showAlert(authAlert, 'GitHub error (HTTP ' + repoRes.status + ').');
+          return;
+        }
+
+        const repoData = await repoRes.json();
+        if (!repoData.permissions || !repoData.permissions.push) {
+          showAlert(authAlert, 'This token cannot write to the repository. Give it Contents: Read and write.');
+          return;
+        }
+
+        const fileRes = await fetch('https://api.github.com/repos/' + repo + '/contents/docs/items.json?ref=' + encodeURIComponent(branch), {
+          headers: {
+            'Accept': 'application/vnd.github+json',
+            'Authorization': 'Bearer ' + token
+          }
+        });
+
+        if (fileRes.status === 404) {
+          showAlert(authAlert, 'docs/items.json not found on branch "' + branch + '".');
+          return;
+        }
+        if (!fileRes.ok) {
+          showAlert(authAlert, 'Failed to fetch items.json (HTTP ' + fileRes.status + ').');
+          return;
+        }
+
+        const fileData = await fileRes.json();
+        fileSha = fileData.sha;
+        const decoded = base64ToUtf8(fileData.content);
+        const parsed = JSON.parse(decoded);
+
+        if (!Array.isArray(parsed)) {
+          showAlert(authAlert, 'docs/items.json format invalid (expected array).');
+          return;
+        }
+
+        ghToken = token;
+        ghRepo = repo;
+        ghBranch = branch;
+        sessionStorage.setItem('gh_token', token);
+        localStorage.setItem('gh_repo', repo);
+        localStorage.setItem('gh_branch', branch);
+
+        loadCatalog(parsed);
+      } catch (err) {
+        showAlert(authAlert, 'Network error: ' + (err.message || 'Unable to connect to GitHub.'));
+      } finally {
+        btnConnect.disabled = false;
+        btnConnect.textContent = 'Connect to Repository';
+      }
+    }
+
+    function loadCatalog(catalogData) {
+      items = catalogData;
+      originalSnapshotMap.clear();
+      items.forEach(it => {
+        originalSnapshotMap.set(it.id, JSON.stringify(it));
+      });
+      openDetailRowIds.clear();
+
+      currentRepoTag.textContent = ghRepo + ' @ ' + ghBranch;
+      headerAuthControls.style.display = 'flex';
+      authView.style.display = 'none';
+      mainView.style.display = 'block';
+
+      refreshCategories();
+      updateSummaryStats();
+      renderTable();
+    }
+
+    function signOut() {
+      if (getChangedItems().length > 0) {
+        if (!confirm('You have unsaved changes. Discard and sign out?')) return;
+      }
+      sessionStorage.removeItem('gh_token');
+      ghToken = '';
+      items = [];
+      originalSnapshotMap.clear();
+      openDetailRowIds.clear();
+      headerAuthControls.style.display = 'none';
+      mainView.style.display = 'none';
+      authView.style.display = 'block';
+      stickyBar.classList.remove('visible');
+      tokenInput.value = '';
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedRepo = localStorage.getItem('gh_repo') || '';
+      const savedBranch = localStorage.getItem('gh_branch') || 'main';
+      const savedToken = sessionStorage.getItem('gh_token') || '';
+
+      if (savedRepo) repoInput.value = savedRepo;
+      if (savedBranch) branchInput.value = savedBranch;
+      if (savedToken) {
+        tokenInput.value = savedToken;
+        handleConnect();
+      }
+    });
+
+    window.addEventListener('beforeunload', (e) => {
+      if (getChangedItems().length > 0) {
+        e.preventDefault();
+        e.returnValue = '';
+      }
+    });
+
+    function renderTable() {
+      const ae = document.activeElement;
+      if (ae && catalogTbody.contains(ae) && /^(INPUT|TEXTAREA|SELECT)$/.test(ae.tagName)) return;
+
+      while (catalogTbody.firstChild) catalogTbody.removeChild(catalogTbody.firstChild);
+      const filtered = getFilteredAndSortedItems();
+
+      if (filtered.length === 0) {
+        const tr = document.createElement('tr');
+        const td = document.createElement('td');
+        td.colSpan = 7;
+        td.style.textAlign = 'center';
+        td.style.padding = '32px';
+        td.style.color = 'var(--muted)';
+        td.textContent = 'No matching items found.';
+        tr.appendChild(td);
+        catalogTbody.appendChild(tr);
+        return;
+      }
+
+      const fragment = document.createDocumentFragment();
+      filtered.forEach(item => {
+        fragment.appendChild(createItemRow(item));
+        if (openDetailRowIds.has(item.id)) {
+          fragment.appendChild(createDetailRow(item));
+        }
+      });
+      catalogTbody.appendChild(fragment);
+    }
+
+    function createItemRow(item) {
+      const tr = document.createElement('tr');
+      tr.className = 'catalog-row' + (isItemChanged(item) ? ' is-changed' : '');
+      tr.id = 'row-' + item.id;
+
+      // Col 1: Photo
+      const tdThumb = document.createElement('td');
+      tdThumb.className = 'col-thumb';
+      tdThumb.setAttribute('data-label', 'Photo');
+
+      const thumbBox = document.createElement('div');
+      thumbBox.className = 'thumb-box';
+
+      const img = document.createElement('img');
+      img.className = 'thumb-img';
+      img.alt = '';
+      const ts = photoTsMap.get(item.id) || '0';
+      img.src = '../img/' + encodeURIComponent(item.id) + '.jpg?t=' + ts;
+      img.onerror = () => {
+        img.style.display = 'none';
+        placeholder.style.display = 'block';
+      };
+
+      const placeholder = document.createElement('span');
+      placeholder.className = 'thumb-placeholder';
+      placeholder.textContent = 'NO PIC';
+      placeholder.style.display = item.photo ? 'none' : 'block';
+
+      thumbBox.appendChild(img);
+      thumbBox.appendChild(placeholder);
+
+      const thumbActions = document.createElement('div');
+      thumbActions.className = 'thumb-actions';
+
+      const btnPhoto = document.createElement('button');
+      btnPhoto.type = 'button';
+      btnPhoto.className = 'btn-secondary btn-sm';
+      btnPhoto.textContent = 'Photo';
+      btnPhoto.setAttribute('aria-label', 'Upload photo for ' + item.id);
+      btnPhoto.onclick = () => openPhotoUpload(item.id);
+
+      thumbActions.appendChild(btnPhoto);
+      tdThumb.appendChild(thumbBox);
+      tdThumb.appendChild(thumbActions);
+      tr.appendChild(tdThumb);
+
+      // Col 2: Details
+      const tdInfo = document.createElement('td');
+      tdInfo.className = 'col-info';
+      tdInfo.setAttribute('data-label', 'Details');
+
+      const idBadge = document.createElement('span');
+      idBadge.className = 'item-id';
+      idBadge.textContent = item.id;
+
+      const titleEn = document.createElement('div');
+      titleEn.className = 'item-title-en';
+      titleEn.textContent = item.te || '(Untitled)';
+
+      const titleFr = document.createElement('div');
+      titleFr.className = 'item-title-fr';
+      titleFr.textContent = item.tf || item.te || '';
+
+      const catTag = document.createElement('div');
+      catTag.className = 'item-category-tag';
+      catTag.textContent = item.cat ? 'Category: ' + item.cat : 'No category';
+
+      tdInfo.appendChild(idBadge);
+      tdInfo.appendChild(titleEn);
+      tdInfo.appendChild(titleFr);
+      tdInfo.appendChild(catTag);
+      tr.appendChild(tdInfo);
+
+      // Col 3: Stock
+      const tdStock = document.createElement('td');
+      tdStock.setAttribute('data-label', 'Stock');
+
+      const btnStock = document.createElement('button');
+      btnStock.type = 'button';
+      btnStock.className = 'btn-stock ' + (item.stock ? 'in-stock' : 'out-of-stock');
+      btnStock.textContent = item.stock ? 'In stock' : 'Out of stock';
+      btnStock.setAttribute('aria-label', 'Toggle stock for ' + item.id);
+      btnStock.onclick = () => {
+        item.stock = !item.stock;
+        btnStock.className = 'btn-stock ' + (item.stock ? 'in-stock' : 'out-of-stock');
+        btnStock.textContent = item.stock ? 'In stock' : 'Out of stock';
+        updateRowChangedState(item, tr);
+        updateChangeUI();
+      };
+      tdStock.appendChild(btnStock);
+      tr.appendChild(tdStock);
+
+      // Col 4: Qty
+      const tdQty = document.createElement('td');
+      tdQty.setAttribute('data-label', 'Quantity');
+
+      const inputQty = document.createElement('input');
+      inputQty.type = 'number';
+      inputQty.min = '0';
+      inputQty.className = 'input-qty';
+      inputQty.value = item.qty !== undefined ? item.qty : 0;
+      inputQty.setAttribute('aria-label', 'Quantity for ' + item.id);
+      inputQty.oninput = () => {
+        const val = parseInt(inputQty.value, 10);
+        item.qty = isNaN(val) || val < 0 ? 0 : val;
+        updateRowChangedState(item, tr);
+        updateChangeUI();
+      };
+      tdQty.appendChild(inputQty);
+      tr.appendChild(tdQty);
+
+      // Col 5: Price
+      const tdPrice = document.createElement('td');
+      tdPrice.setAttribute('data-label', 'Price');
+
+      const inputPrice = document.createElement('input');
+      inputPrice.type = 'text';
+      inputPrice.inputMode = 'numeric';
+      inputPrice.className = 'input-price';
+      inputPrice.placeholder = 'on request';
+      inputPrice.value = (item.xaf !== null && item.xaf !== undefined) ? item.xaf : '';
+      inputPrice.setAttribute('aria-label', 'Price in FCFA for ' + item.id);
+      inputPrice.oninput = () => {
+        const trimmed = inputPrice.value.trim();
+        if (trimmed === '') {
+          item.xaf = null;
+        } else {
+          const num = parseInt(trimmed.replace(/\s+/g, ''), 10);
+          item.xaf = isNaN(num) || num < 0 ? null : num;
+        }
+        updateRowChangedState(item, tr);
+        updateChangeUI();
+      };
+      tdPrice.appendChild(inputPrice);
+      tr.appendChild(tdPrice);
+
+      // Col 6: Bonanjo
+      const tdBon = document.createElement('td');
+      tdBon.setAttribute('data-label', 'Bonanjo');
+
+      const chkBon = document.createElement('input');
+      chkBon.type = 'checkbox';
+      chkBon.className = 'checkbox-bon';
+      chkBon.checked = Boolean(item.bon);
+      chkBon.setAttribute('aria-label', 'Held in Bonanjo for ' + item.id);
+      chkBon.onchange = () => {
+        item.bon = chkBon.checked;
+        updateRowChangedState(item, tr);
+        updateChangeUI();
+      };
+      tdBon.appendChild(chkBon);
+      tr.appendChild(tdBon);
+
+      // Col 7: Edit text
+      const tdAction = document.createElement('td');
+      tdAction.setAttribute('data-label', 'Actions');
+
+      const btnEdit = document.createElement('button');
+      btnEdit.type = 'button';
+      btnEdit.className = 'btn-secondary btn-sm';
+      btnEdit.textContent = openDetailRowIds.has(item.id) ? 'Close' : 'Edit text';
+      btnEdit.setAttribute('aria-label', 'Edit text for ' + item.id);
+      btnEdit.onclick = () => {
+        if (openDetailRowIds.has(item.id)) {
+          openDetailRowIds.delete(item.id);
+        } else {
+          openDetailRowIds.add(item.id);
+        }
+        renderTable();
+      };
+      tdAction.appendChild(btnEdit);
+      tr.appendChild(tdAction);
+
+      return tr;
+    }
+
+    function createDetailRow(item) {
+      const tr = document.createElement('tr');
+      tr.className = 'detail-row';
+      tr.id = 'detail-' + item.id;
+
+      const td = document.createElement('td');
+      td.colSpan = 7;
+
+      const container = document.createElement('div');
+      container.className = 'detail-container';
+
+      const header = document.createElement('div');
+      header.className = 'detail-header';
+      header.textContent = 'Edit product details: ' + item.id;
+      container.appendChild(header);
+
+      // Title EN
+      const grpTe = document.createElement('div');
+      grpTe.className = 'form-group';
+      const lblTe = document.createElement('label');
+      lblTe.textContent = 'Title EN (Required, max 140 chars)';
+      const inpTe = document.createElement('input');
+      inpTe.type = 'text';
+      inpTe.maxLength = 140;
+      inpTe.className = 'form-control';
+      inpTe.value = item.te || '';
+      inpTe.oninput = () => {
+        item.te = inpTe.value;
+        const r = document.getElementById('row-' + item.id);
+        if (r) {
+          const el = r.querySelector('.item-title-en');
+          if (el) el.textContent = item.te || '(Untitled)';
+          updateRowChangedState(item, r);
+        }
+        updateChangeUI();
+      };
+      grpTe.appendChild(lblTe);
+      grpTe.appendChild(inpTe);
+      container.appendChild(grpTe);
+
+      // Title FR
+      const grpTf = document.createElement('div');
+      grpTf.className = 'form-group';
+      const lblTf = document.createElement('label');
+      lblTf.textContent = 'Titre FR (Max 140 chars, defaults to EN if blank)';
+      const inpTf = document.createElement('input');
+      inpTf.type = 'text';
+      inpTf.maxLength = 140;
+      inpTf.className = 'form-control';
+      inpTf.placeholder = 'Defaults to English title';
+      inpTf.value = item.tf || '';
+      inpTf.oninput = () => {
+        item.tf = inpTf.value;
+        const r = document.getElementById('row-' + item.id);
+        if (r) {
+          const el = r.querySelector('.item-title-fr');
+          if (el) el.textContent = item.tf || item.te || '';
+          updateRowChangedState(item, r);
+        }
+        updateChangeUI();
+      };
+      grpTf.appendChild(lblTf);
+      grpTf.appendChild(inpTf);
+      container.appendChild(grpTf);
+
+      // Category
+      const grpCat = document.createElement('div');
+      grpCat.className = 'form-group';
+      const lblCat = document.createElement('label');
+      lblCat.textContent = 'Category';
+      const inpCat = document.createElement('input');
+      inpCat.type = 'text';
+      inpCat.setAttribute('list', 'category-datalist');
+      inpCat.className = 'form-control';
+      inpCat.value = item.cat || '';
+      inpCat.oninput = () => {
+        item.cat = inpCat.value;
+        const r = document.getElementById('row-' + item.id);
+        if (r) {
+          const el = r.querySelector('.item-category-tag');
+          if (el) el.textContent = item.cat ? 'Category: ' + item.cat : 'No category';
+          updateRowChangedState(item, r);
+        }
+        updateChangeUI();
+        refreshCategories();
+      };
+      grpCat.appendChild(lblCat);
+      grpCat.appendChild(inpCat);
+      container.appendChild(grpCat);
+
+      // Image type
+      const grpImg = document.createElement('div');
+      grpImg.className = 'form-group';
+      const lblImg = document.createElement('label');
+      lblImg.textContent = 'Image Type';
+      const selImg = document.createElement('select');
+      selImg.className = 'form-control';
+      [
+        { val: 'illustration', label: 'Illustration' },
+        { val: 'brand', label: 'Brand photo' },
+        { val: 'own', label: 'Own photo' }
+      ].forEach(o => {
+        const opt = document.createElement('option');
+        opt.value = o.val;
+        opt.textContent = o.label;
+        if (item.img === o.val) opt.selected = true;
+        selImg.appendChild(opt);
+      });
+      selImg.onchange = () => {
+        item.img = selImg.value;
+        const r = document.getElementById('row-' + item.id);
+        if (r) updateRowChangedState(item, r);
+        updateChangeUI();
+      };
+      grpImg.appendChild(lblImg);
+      grpImg.appendChild(selImg);
+      container.appendChild(grpImg);
+
+      // Description EN
+      const grpDe = document.createElement('div');
+      grpDe.className = 'form-group';
+      grpDe.style.gridColumn = '1 / -1';
+      const lblDe = document.createElement('label');
+      lblDe.textContent = 'Description EN (Max 220 chars)';
+      const inpDe = document.createElement('input');
+      inpDe.type = 'text';
+      inpDe.maxLength = 220;
+      inpDe.className = 'form-control';
+      inpDe.value = item.de || '';
+      inpDe.oninput = () => {
+        item.de = inpDe.value;
+        const r = document.getElementById('row-' + item.id);
+        if (r) updateRowChangedState(item, r);
+        updateChangeUI();
+      };
+      grpDe.appendChild(lblDe);
+      grpDe.appendChild(inpDe);
+      container.appendChild(grpDe);
+
+      // Description FR
+      const grpDf = document.createElement('div');
+      grpDf.className = 'form-group';
+      grpDf.style.gridColumn = '1 / -1';
+      const lblDf = document.createElement('label');
+      lblDf.textContent = 'Description FR (Max 220 chars)';
+      const inpDf = document.createElement('input');
+      inpDf.type = 'text';
+      inpDf.maxLength = 220;
+      inpDf.className = 'form-control';
+      inpDf.value = item.df || '';
+      inpDf.oninput = () => {
+        item.df = inpDf.value;
+        const r = document.getElementById('row-' + item.id);
+        if (r) updateRowChangedState(item, r);
+        updateChangeUI();
+      };
+      grpDf.appendChild(lblDf);
+      grpDf.appendChild(inpDf);
+      container.appendChild(grpDf);
+
+      td.appendChild(container);
+      tr.appendChild(td);
+      return tr;
+    }
+
+    function updateRowChangedState(item, tr) {
+      if (isItemChanged(item)) {
+        tr.classList.add('is-changed');
+      } else {
+        tr.classList.remove('is-changed');
+      }
+    }
+
+    function getFilteredAndSortedItems() {
+      const q = searchInput.value.trim().toLowerCase();
+      const selCat = categoryFilter.value;
+      const sortVal = sortSelect.value;
+
+      let list = items.filter(item => {
+        if (q) {
+          const idMatch = item.id.toLowerCase().includes(q);
+          const teMatch = (item.te || '').toLowerCase().includes(q);
+          const tfMatch = (item.tf || '').toLowerCase().includes(q);
+          if (!idMatch && !teMatch && !tfMatch) return false;
+        }
+        if (selCat && item.cat !== selCat) return false;
+        if (currentFilterChip === 'outofstock' && item.stock) return false;
+        if (currentFilterChip === 'noprice' && item.xaf !== null && item.xaf !== undefined) return false;
+        if (currentFilterChip === 'nophoto' && item.photo) return false;
+        if (currentFilterChip === 'changed' && !isItemChanged(item)) return false;
+        return true;
+      });
+
+      list.sort((a, b) => {
+        if (sortVal === 'ref-asc') return extractNum(a.id) - extractNum(b.id);
+        if (sortVal === 'ref-desc') return extractNum(b.id) - extractNum(a.id);
+        if (sortVal === 'title-asc') return (a.te || '').localeCompare(b.te || '');
+        if (sortVal === 'price-asc') {
+          const pa = a.xaf !== null ? a.xaf : Infinity;
+          const pb = b.xaf !== null ? b.xaf : Infinity;
+          return pa - pb;
+        }
+        if (sortVal === 'price-desc') {
+          const pa = a.xaf !== null ? a.xaf : -1;
+          const pb = b.xaf !== null ? b.xaf : -1;
+          return pb - pa;
+        }
+        if (sortVal === 'stock-out') {
+          if (a.stock === b.stock) return extractNum(a.id) - extractNum(b.id);
+          return a.stock ? 1 : -1;
+        }
+        return 0;
+      });
+
+      return list;
+    }
+
+    function extractNum(id) {
+      const m = id.match(/\d+/);
+      return m ? parseInt(m[0], 10) : 0;
+    }
+
+    searchInput.addEventListener('input', () => renderTable());
+    categoryFilter.addEventListener('change', () => renderTable());
+    sortSelect.addEventListener('change', () => renderTable());
+
+    document.querySelectorAll('.chip-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.chip-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentFilterChip = btn.getAttribute('data-filter');
+        renderTable();
+      });
+    });
+
+    btnAddItem.addEventListener('click', () => {
+      let maxNum = 0;
+      items.forEach(it => {
+        const m = it.id.match(/^OZ-(\d+)$/);
+        if (m) {
+          const n = parseInt(m[1], 10);
+          if (n > maxNum) maxNum = n;
+        }
+      });
+      const nextId = 'OZ-' + String(maxNum + 1).padStart(3, '0');
+
+      const newItem = {
+        id: nextId,
+        te: '',
+        tf: '',
+        de: '',
+        df: '',
+        cat: categoryFilter.value || '',
+        qty: 1,
+        bon: true,
+        xaf: null,
+        stock: true,
+        img: 'illustration',
+        photo: false
+      };
+
+      items.unshift(newItem);
+      openDetailRowIds.add(nextId);
+      currentFilterChip = 'all';
+      document.querySelectorAll('.chip-btn').forEach(b => {
+        b.classList.toggle('active', b.getAttribute('data-filter') === 'all');
+      });
+
+      refreshCategories();
+      updateChangeUI();
+      renderTable();
+
+      const detailElem = document.getElementById('detail-' + nextId);
+      if (detailElem) {
+        const inp = detailElem.querySelector('input');
+        if (inp) inp.focus();
+      }
+    });
+
+    btnDownloadBackup.addEventListener('click', () => {
+      const dataStr = JSON.stringify(items, null, 2) + '\n';
+      const blob = new Blob([dataStr], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'items-backup-' + new Date().toISOString().slice(0, 10) + '.json';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    });
+
+    btnDiscardChanges.addEventListener('click', () => {
+      const changed = getChangedItems();
+      if (changed.length === 0) return;
+      if (!confirm('Discard all ' + changed.length + ' unsaved change(s) and reload original catalog?')) return;
+
+      const restored = [];
+      originalSnapshotMap.forEach(val => {
+        restored.push(JSON.parse(val));
+      });
+      items = restored;
+      openDetailRowIds.clear();
+      updateChangeUI();
+      renderTable();
+      showAlert(mainAlert, 'Changes discarded.', 'success');
+    });
+
+    btnSaveGithub.addEventListener('click', async () => {
+      clearAlert(mainAlert);
+      const changed = getChangedItems();
+      if (changed.length === 0) {
+        showAlert(mainAlert, 'No changes to save.', 'success');
+        return;
+      }
+
+      for (const it of items) {
+        if (!ID_REGEX.test(it.id)) {
+          showAlert(mainAlert, 'Invalid ID: "' + it.id + '". Must match pattern ^OZ-\d{3,5}$.');
+          return;
+        }
+        if (!it.te || !it.te.trim()) {
+          showAlert(mainAlert, 'Item ' + it.id + ' must have an English title.');
+          openDetailRowIds.add(it.id);
+          renderTable();
+          return;
+        }
+        if (it.te.length > 140) {
+          showAlert(mainAlert, 'Item ' + it.id + ' English title exceeds 140 characters.');
+          return;
+        }
+        if (!it.tf || !it.tf.trim()) {
+          it.tf = it.te;
+        }
+        if (it.tf.length > 140) {
+          showAlert(mainAlert, 'Item ' + it.id + ' French title exceeds 140 characters.');
+          return;
+        }
+        if (it.de && it.de.length > 220) {
+          showAlert(mainAlert, 'Item ' + it.id + ' English description exceeds 220 characters.');
+          return;
+        }
+        if (it.df && it.df.length > 220) {
+          showAlert(mainAlert, 'Item ' + it.id + ' French description exceeds 220 characters.');
+          return;
+        }
+        if (typeof it.qty !== 'number' || it.qty < 0 || !Number.isInteger(it.qty)) {
+          showAlert(mainAlert, 'Item ' + it.id + ' quantity must be an integer >= 0.');
+          return;
+        }
+        if (it.xaf !== null && (typeof it.xaf !== 'number' || it.xaf < 0 || !Number.isInteger(it.xaf))) {
+          showAlert(mainAlert, 'Item ' + it.id + ' price must be an integer >= 0 or null.');
+          return;
+        }
+      }
+
+      btnSaveGithub.disabled = true;
+      btnSaveGithub.textContent = 'Saving...';
+
+      try {
+        const jsonContent = JSON.stringify(items, null, 2) + '\n';
+        const b64Content = utf8ToBase64(jsonContent);
+
+        const putRes = await ghFetch('https://api.github.com/repos/' + ghRepo + '/contents/docs/items.json', {
+          method: 'PUT',
+          body: JSON.stringify({
+            message: 'Update catalog (' + changed.length + ' items) via admin',
+            content: b64Content,
+            branch: ghBranch,
+            sha: fileSha
+          })
+        });
+
+        if (putRes.status === 409 || putRes.status === 422) {
+          showAlert(mainAlert, 'The file changed on GitHub since the page was opened. Download a backup of your changes, then sign out and in again to reload.');
+          return;
+        }
+        if (!putRes.ok) {
+          const errData = await putRes.json().catch(() => ({}));
+          showAlert(mainAlert, 'Failed to save to GitHub (HTTP ' + putRes.status + '): ' + (errData.message || 'Check permissions.'));
+          return;
+        }
+
+        const resData = await putRes.json();
+        fileSha = resData.content.sha;
+
+        originalSnapshotMap.clear();
+        items.forEach(it => {
+          originalSnapshotMap.set(it.id, JSON.stringify(it));
+        });
+
+        updateChangeUI();
+        renderTable();
+        showAlert(mainAlert, 'Saved. The live site updates in a minute or two.', 'success');
+      } catch (err) {
+        showAlert(mainAlert, 'Error saving catalog: ' + (err.message || 'Network failure.'));
+      } finally {
+        btnSaveGithub.disabled = false;
+        btnSaveGithub.textContent = 'Save to GitHub';
+      }
+    });
+
+    function openPhotoUpload(itemId) {
+      targetUploadItemId = itemId;
+      hiddenPhotoInput.value = '';
+      hiddenPhotoInput.click();
+    }
+
+    hiddenPhotoInput.addEventListener('change', async (e) => {
+      const file = e.target.files && e.target.files[0];
+      if (!file || !targetUploadItemId) return;
+
+      const itemId = targetUploadItemId;
+      showAlert(mainAlert, 'Processing image for ' + itemId + '...', 'success');
+
+      try {
+        const processedBlob = await resizeImageCover(file, 640, 480, 45 * 1024);
+        const b64Data = await blobToBase64(processedBlob);
+        const sizeKb = (processedBlob.size / 1024).toFixed(1);
+
+        let imgSha = null;
+        const getRes = await ghFetch('https://api.github.com/repos/' + ghRepo + '/contents/docs/img/' + itemId + '.jpg?ref=' + encodeURIComponent(ghBranch));
+        if (getRes.status === 200) {
+          const getData = await getRes.json();
+          imgSha = getData.sha;
+        }
+
+        const putBody = {
+          message: 'Image for ' + itemId + ' via admin',
+          content: b64Data,
+          branch: ghBranch
+        };
+        if (imgSha) putBody.sha = imgSha;
+
+        const putRes = await ghFetch('https://api.github.com/repos/' + ghRepo + '/contents/docs/img/' + itemId + '.jpg', {
+          method: 'PUT',
+          body: JSON.stringify(putBody)
+        });
+
+        if (!putRes.ok) {
+          showAlert(mainAlert, 'Failed to upload photo to GitHub (HTTP ' + putRes.status + ').');
+          return;
+        }
+
+        const it = items.find(x => x.id === itemId);
+        if (it) {
+          it.photo = true;
+          photoTsMap.set(itemId, Date.now());
+          updateChangeUI();
+          renderTable();
+        }
+
+        showAlert(mainAlert, 'Photo uploaded (' + sizeKb + ' KB). Set Image type to Own photo or Brand photo if it is not an illustration.', 'success');
+      } catch (err) {
+        showAlert(mainAlert, 'Failed to upload photo: ' + (err.message || 'Image processing error.'));
+      }
+    });
+
+    function resizeImageCover(file, targetW, targetH, maxSizeBytes) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => {
+          const img = new Image();
+          img.onload = async () => {
+            const canvas = document.createElement('canvas');
+            canvas.width = targetW;
+            canvas.height = targetH;
+            const ctx = canvas.getContext('2d');
+
+            const targetRatio = targetW / targetH;
+            const srcRatio = img.width / img.height;
+
+            let sx = 0, sy = 0, sWidth = img.width, sHeight = img.height;
+            if (srcRatio > targetRatio) {
+              sWidth = img.height * targetRatio;
+              sx = (img.width - sWidth) / 2;
+            } else {
+              sHeight = img.width / targetRatio;
+              sy = (img.height - sHeight) / 2;
+            }
+
+            ctx.drawImage(img, sx, sy, sWidth, sHeight, 0, 0, targetW, targetH);
+
+            let quality = 0.85;
+            let blob = await new Promise(r => canvas.toBlob(r, 'image/jpeg', quality));
+            while (blob && blob.size > maxSizeBytes && quality > 0.5) {
+              quality = Math.max(0.5, quality - 0.05);
+              blob = await new Promise(r => canvas.toBlob(r, 'image/jpeg', quality));
+            }
+
+            if (blob) {
+              resolve(blob);
+            } else {
+              reject(new Error('Canvas export failed'));
+            }
+          };
+          img.onerror = () => reject(new Error('Invalid image file'));
+          img.src = reader.result;
+        };
+        reader.onerror = () => reject(new Error('Failed to read file'));
+        reader.readAsDataURL(file);
+      });
+    }
+
+    function blobToBase64(blob) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          const res = reader.result;
+          const commaIdx = res.indexOf(',');
+          resolve(commaIdx !== -1 ? res.substring(commaIdx + 1) : res);
+        };
+        reader.onerror = reject;
+        reader.readAsDataURL(blob);
+      });
+    }
+
+    btnSignOut.addEventListener('click', signOut);
+  </script>
+</body>
+</html>
