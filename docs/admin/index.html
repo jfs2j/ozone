@@ -565,12 +565,12 @@
       statTotal.textContent = items.length;
       statInstock.textContent = items.filter(i => i.stock).length;
       statPriced.textContent = items.filter(i => i.xaf !== null && i.xaf !== undefined).length;
-      statPhoto.textContent = items.filter(i => i.photo).length;
+      statPhoto.textContent = items.filter(i => i.photo || i.pics > 0).length;
 
       countChipAll.textContent = items.length;
       countChipOutofstock.textContent = items.filter(i => !i.stock).length;
       countChipNoprice.textContent = items.filter(i => i.xaf === null || i.xaf === undefined).length;
-      countChipNophoto.textContent = items.filter(i => !i.photo).length;
+      countChipNophoto.textContent = items.filter(i => !(i.photo || i.pics > 0)).length;
       countChipChanged.textContent = getChangedItems().length;
     }
 
@@ -799,7 +799,7 @@
       img.className = 'thumb-img';
       img.alt = '';
       const ts = photoTsMap.get(item.id) || '0';
-      img.src = '../img/' + encodeURIComponent(item.id) + (item.photo ? '.jpg' : '.webp') + '?t=' + ts;
+      img.src = '../img/' + encodeURIComponent(item.id) + (item.photo ? '.jpg' : item.pics > 0 ? '-t.webp' : '.webp') + '?t=' + ts;
       img.onerror = () => {
         img.style.display = 'none';
         placeholder.style.display = 'block';
@@ -808,7 +808,7 @@
       const placeholder = document.createElement('span');
       placeholder.className = 'thumb-placeholder';
       placeholder.textContent = 'NO PIC';
-      placeholder.style.display = item.photo ? 'none' : 'block';
+      placeholder.style.display = (item.photo || item.pics > 0) ? 'none' : 'block';
 
       thumbBox.appendChild(img);
       thumbBox.appendChild(placeholder);
@@ -1146,7 +1146,7 @@
         if (selCat && item.cat !== selCat) return false;
         if (currentFilterChip === 'outofstock' && item.stock) return false;
         if (currentFilterChip === 'noprice' && item.xaf !== null && item.xaf !== undefined) return false;
-        if (currentFilterChip === 'nophoto' && item.photo) return false;
+        if (currentFilterChip === 'nophoto' && (item.photo || item.pics > 0)) return false;
         if (currentFilterChip === 'changed' && !isItemChanged(item)) return false;
         return true;
       });
