@@ -142,6 +142,51 @@ dialog[open]{animation:up .2s ease-out}
 .go2:hover{border-color:var(--ink)}
 .go2[hidden]{display:none}
 .go.off{background:var(--tint);color:var(--ink3);pointer-events:none}
+/* cart */
+.cartb{position:relative;display:inline-grid;place-items:center;width:38px;height:38px;border-radius:50%;border:1.5px solid var(--line);background:var(--card);cursor:pointer;color:var(--ink)}
+.cartb:hover{border-color:var(--ink)}
+.cartb svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.cartb b{position:absolute;top:-5px;right:-5px;min-width:19px;height:19px;padding:0 5px;border-radius:999px;background:var(--tag);color:var(--tag-ink);font-size:.72rem;font-weight:800;display:grid;place-items:center}
+.cartb b[hidden]{display:none}
+@media(max-width:430px){.wa-top span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.wa-top{padding:9px}.wa-top svg{width:20px;height:20px}}
+button.go,button.go2{width:100%;cursor:pointer;font-size:1rem}
+button.go{border:0}
+button.go2{background:none;color:var(--ink);font-size:.92rem}
+button[hidden],.go[hidden]{display:none}
+#cart{width:min(560px,100%)}
+.chead{position:sticky;top:0;z-index:2;background:var(--card);display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;border-bottom:1px solid var(--line)}
+.chead h2{font-size:1.25rem;letter-spacing:-.02em}
+.chead .close{position:static;flex:none}
+.cbody{padding:6px 18px 22px}
+.clist{list-style:none;padding:0}
+.clist li{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.clist .ct{font-weight:700;line-height:1.25}
+.clist .cr{font-size:.76rem;color:var(--ink3)}
+.clist .cp{font-weight:800;text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.qty{display:inline-flex;align-items:center;gap:2px;margin-top:6px}
+.qty button{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--line);background:var(--card);font-size:1.15rem;line-height:1;cursor:pointer}
+.qty button:hover{border-color:var(--ink)}
+.qty span{min-width:30px;text-align:center;font-weight:800}
+.rm{align-self:end;justify-self:end;border:0;background:none;color:var(--ink2);text-decoration:underline;font-size:.82rem;cursor:pointer;padding:6px 0}
+.ctotal{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:14px 0 4px;font-size:1.05rem}
+.ctotal strong{font-size:1.4rem;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.cnote{font-size:.8rem;color:var(--ink2);margin:2px 0 6px}
+#c-form label,#c-form legend{display:block;font-weight:700;font-size:.88rem;margin-top:14px}
+#c-form input[type=text],#c-form input[type=tel]{display:block;width:100%;height:44px;margin-top:5px;border:1.5px solid var(--line);background:var(--card);border-radius:12px;padding:0 12px;font-weight:450}
+#c-form input:focus{border-color:var(--ink);outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--ring) 30%,transparent)}
+#c-form fieldset{border:0;padding:0;min-width:0}
+.pay{display:flex;align-items:center;gap:10px;margin-top:8px;padding:11px 12px;border:1.5px solid var(--line);border-radius:12px;font-weight:650;font-size:.95rem;cursor:pointer;background:var(--card)}
+#c-form .pay{margin-top:8px;font-size:.95rem}
+.pay input{width:18px;height:18px;accent-color:var(--ink);flex:none}
+.pay:has(input:checked){border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
+.paynote{margin-top:10px;padding:10px 12px;border-radius:12px;background:var(--tint);font-size:.86rem}
+.cerr{margin-top:12px;color:var(--bad);font-weight:700;font-size:.9rem}
+.priv{font-size:.76rem;color:var(--ink3);margin-top:10px}
+.cempty{text-align:center;padding:36px 0;color:var(--ink2)}
+.done{text-align:center;padding-top:18px}
+.done .on{display:inline-block;margin:10px 0 6px;padding:8px 18px;border-radius:12px;background:var(--tint);font:800 1.5rem var(--font);letter-spacing:.02em;user-select:all}
+.done p{color:var(--ink2);max-width:46ch;margin:8px auto}
+#cart [hidden]{display:none!important}
 .foot{padding:0 0 110px;font-size:.8rem;color:var(--ink3)}
 </style>
 </head>
@@ -157,6 +202,7 @@ dialog[open]{animation:up .2s ease-out}
         <button type="button" id="l-fr" aria-pressed="true">FR</button>
         <button type="button" id="l-en" aria-pressed="false">EN</button>
       </div>
+      <button type="button" class="cartb" id="cartb"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.2 11.2a1 1 0 0 1-1 .8H7.2a1 1 0 0 1-1-.8Z"/><path d="M9 8V7a3 3 0 0 1 6 0v1"/></svg><b id="cartn" hidden>0</b></button>
       <a class="wa-top" id="wa-top" href="#" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3Zm0 2a7 7 0 1 1-3.6 13l-.3-.2-2.4.6.6-2.3-.2-.3A7 7 0 0 1 12 5Zm-2.3 3.2c-.2 0-.4.1-.6.3-.2.3-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.7 2.7 4.2 3.7 2 .8 2.5.6 3 .6.5-.1 1.4-.6 1.6-1.2.2-.6.2-1 .1-1.2-.1-.1-.2-.2-.5-.3l-1.6-.8c-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1-.2-.1-.9-.3-1.8-1.1-.6-.6-1.1-1.3-1.2-1.5-.1-.2 0-.3.1-.4l.4-.5.2-.4v-.4l-.7-1.7c-.2-.4-.3-.4-.5-.4Z"/></svg><span id="wa-top-t">WhatsApp</span></a>
     </div>
   </header>
@@ -200,13 +246,41 @@ dialog[open]{animation:up .2s ease-out}
     <div class="dprice"><span class="tag" id="d-tag"></span><span class="stock" id="d-stock"></span></div>
     <p id="d-desc"></p>
     <div class="ref" id="d-ref"></div>
+    <button type="button" class="go" id="d-add" hidden></button>
     <a class="go" id="d-go" href="#" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3Zm0 2a7 7 0 1 1-3.6 13l-.3-.2-2.4.6.6-2.3-.2-.3A7 7 0 0 1 12 5Zm-2.3 3.2c-.2 0-.4.1-.6.3-.2.3-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.7 2.7 4.2 3.7 2 .8 2.5.6 3 .6.5-.1 1.4-.6 1.6-1.2.2-.6.2-1 .1-1.2-.1-.1-.2-.2-.5-.3l-1.6-.8c-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1-.2-.1-.9-.3-1.8-1.1-.6-.6-1.1-1.3-1.2-1.5-.1-.2 0-.3.1-.4l.4-.5.2-.4v-.4l-.7-1.7c-.2-.4-.3-.4-.5-.4Z"/></svg><span id="d-go-t"></span></a>
     <a class="go2" id="d-ph" href="#" target="_blank" rel="noopener noreferrer"></a>
   </div>
 </dialog>
 
+<dialog id="cart" aria-labelledby="c-title">
+  <div class="chead"><h2 id="c-title"></h2><button type="button" class="close" id="c-close">&times;</button></div>
+  <div class="cbody">
+    <div class="cempty" id="c-empty" hidden></div>
+    <div id="c-main">
+    <ul class="clist" id="c-list"></ul>
+    <div class="ctotal"><span id="c-tl"></span><strong id="c-tv"></strong></div>
+    <p class="cnote" id="c-tn"></p>
+    <form id="c-form" novalidate>
+      <label for="c-name" id="c-nl"></label><input type="text" id="c-name" maxlength="60" autocomplete="name">
+      <label for="c-tel" id="c-pl"></label><input type="tel" id="c-tel" inputmode="tel" maxlength="22" autocomplete="tel">
+      <label for="c-city" id="c-cl"></label><input type="text" id="c-city" maxlength="80" autocomplete="address-level2">
+      <fieldset><legend id="c-payl"></legend><div id="c-pay"></div></fieldset>
+      <p class="paynote" id="c-paynote" aria-live="polite" hidden></p>
+      <p class="cerr" id="c-err" role="alert" hidden></p>
+      <button type="submit" class="go" id="c-submit"></button>
+      <p class="priv" id="c-priv"></p>
+    </form>
+    </div>
+    <div class="done" id="c-done" hidden>
+      <p id="c-d1"></p><div class="on" id="c-on"></div><p id="c-d2"></p>
+      <a class="go" id="c-send" href="#" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3Zm0 2a7 7 0 1 1-3.6 13l-.3-.2-2.4.6.6-2.3-.2-.3A7 7 0 0 1 12 5Zm-2.3 3.2c-.2 0-.4.1-.6.3-.2.3-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.7 2.7 4.2 3.7 2 .8 2.5.6 3 .6.5-.1 1.4-.6 1.6-1.2.2-.6.2-1 .1-1.2-.1-.1-.2-.2-.5-.3l-1.6-.8c-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1-.2-.1-.9-.3-1.8-1.1-.6-.6-1.1-1.3-1.2-1.5-.1-.2 0-.3.1-.4l.4-.5.2-.4v-.4l-.7-1.7c-.2-.4-.3-.4-.5-.4Z"/></svg><span id="c-send-t"></span></a>
+      <button type="button" class="go2" id="c-back"></button>
+    </div>
+  </div>
+</dialog>
+
 <script>
-const WA="17572755446";
+const WA="237654520773";
 const S={
 fr:{h1:"Neuf, scellé, importé des États-Unis.",sub:"Électroménager, eau, solaire et sécurité pour la maison. Cherchez, puis écrivez-nous sur WhatsApp.",
  f1:"Neuf, jamais ouvert",f2:"Disponible à Douala",f3:"Plus de photos sur demande",hint:"Disponibilité confirmée sur WhatsApp",
@@ -215,7 +289,15 @@ fr:{h1:"Neuf, scellé, importé des États-Unis.",sub:"Électroménager, eau, so
  qty:n=>n+(n>1?" disponibles":" disponible"),xaf:"FCFA",rq:"Prix sur demande",ref:"Réf.",close:"Fermer",photos:"Demander plus de photos",msgp:(t,id)=>"Bonjour, pouvez-vous m'envoyer plus de photos de : "+t+" (réf "+id+")",
  none:"Aucun produit trouvé",nonedesc:"Modifiez votre recherche ou retirez un filtre.",reset:"Réinitialiser",
  loaderr:"Le catalogue ne se charge pas pour le moment. Écrivez-nous directement sur WhatsApp.",
- foot:"Produits neufs dans leur emballage d'origine. Images illustratives, plus de photos sur demande.",
+ foot:"Produits neufs dans leur emballage d'origine. Images illustratives, plus de photos sur demande. Paiement : Orange Money, MTN MoMo, espèces ou virement.",
+ cart:"Panier",cartopen:"Ouvrir le panier",add:"Ajouter au panier",inc:"Ajouté, voir le panier",cempty:"Votre panier est vide.",rmv:"Retirer",plus:"Ajouter un",minus:"Retirer un",sbt:"Total articles",subn:"Hors frais de paiement éventuels. Disponibilité et livraison confirmées sur WhatsApp.",
+ nm:"Votre nom",tel:"Votre numéro WhatsApp",city:"Ville et quartier (livraison ou retrait)",payl:"Mode de paiement",
+ pay:{om:"Orange Money",momo:"MTN MoMo",cash:"Espèces, en personne",bank:"Virement bancaire"},
+ pnote:{om:"Les frais Orange Money sont à votre charge. Nous vous indiquons sur WhatsApp le montant exact à envoyer, frais inclus.",momo:"Les frais MTN MoMo sont à votre charge. Nous vous indiquons sur WhatsApp le montant exact à envoyer, frais inclus.",cash:"Vous payez en personne, à la remise ou au retrait de votre commande.",bank:"Nous vous envoyons nos coordonnées bancaires sur WhatsApp après confirmation."},
+ eN:"Indiquez votre nom.",eT:"Indiquez un numéro valide, avec l'indicatif (ex. +237 6...).",eP:"Choisissez un mode de paiement.",
+ place:"Passer la commande",priv:"Vos informations servent uniquement à traiter cette commande et ne sont pas enregistrées sur ce site.",
+ d1:"Votre commande est prête. Votre numéro :",d2:"Elle n'est enregistrée que lorsque vous nous envoyez le message sur WhatsApp. Nous confirmons la disponibilité et le paiement par retour.",send:"Envoyer ma commande sur WhatsApp",back:"Modifier la commande",
+ m:{hi:"Bonjour, nouvelle commande OZone.",no:"N° de commande",tot:"Total articles",pay:"Paiement",fees:"frais à ma charge",nm:"Nom",tel:"Téléphone",city:"Ville / quartier",end:"Merci de confirmer la disponibilité et les instructions de paiement."},
  msg:(t,id)=>"Bonjour, je suis intéressé(e) par : "+t+" (réf "+id+")",gen:"Bonjour, je souhaite des informations sur vos produits OZone.",
  sort:{rec:"Recommandé",pa:"Prix croissant",pd:"Prix décroissant",az:"Nom A à Z",za:"Nom Z à A"},
  cats:{"Water heaters":"Chauffe-eau","Cooktops & kitchen":"Cuisine","Bath & shower":"Salle de bain","Water & pumps":"Eau et pompes","Smart locks & security":"Serrures et sécurité","Solar":"Solaire","Lighting":"Éclairage","Furniture & home":"Maison et meubles","Tools & electronics":"Outils et électronique"}},
@@ -226,7 +308,15 @@ en:{h1:"New, sealed, imported from the USA.",sub:"Appliances, water, solar and h
  qty:n=>n+" available",xaf:"FCFA",rq:"Price on request",ref:"Ref.",close:"Close",photos:"Ask for more photos",msgp:(t,id)=>"Hello, could you send me more photos of: "+t+" (ref "+id+")",
  none:"No products found",nonedesc:"Change your search or remove a filter.",reset:"Reset",
  loaderr:"The catalog is not loading right now. Message us directly on WhatsApp.",
- foot:"New products in their original packaging. Illustrative images, more photos on request.",
+ foot:"New products in their original packaging. Illustrative images, more photos on request. Payment: Orange Money, MTN MoMo, cash or bank transfer.",
+ cart:"Cart",cartopen:"Open cart",add:"Add to cart",inc:"Added, view cart",cempty:"Your cart is empty.",rmv:"Remove",plus:"Add one",minus:"Remove one",sbt:"Items total",subn:"Excludes any payment fees. Availability and delivery confirmed on WhatsApp.",
+ nm:"Your name",tel:"Your WhatsApp number",city:"City and area (delivery or pickup)",payl:"Payment method",
+ pay:{om:"Orange Money",momo:"MTN MoMo",cash:"Cash, in person",bank:"Bank transfer"},
+ pnote:{om:"Orange Money fees are paid by the buyer. We tell you on WhatsApp the exact amount to send, fees included.",momo:"MTN MoMo fees are paid by the buyer. We tell you on WhatsApp the exact amount to send, fees included.",cash:"You pay in person, on delivery or pickup.",bank:"We send you our bank details on WhatsApp after confirmation."},
+ eN:"Enter your name.",eT:"Enter a valid number with country code (e.g. +237 6...).",eP:"Choose a payment method.",
+ place:"Place order",priv:"Your details are only used to process this order and are not stored on this site.",
+ d1:"Your order is ready. Your order number:",d2:"It is only registered once you send us the message on WhatsApp. We confirm availability and payment in reply.",send:"Send my order on WhatsApp",back:"Edit order",
+ m:{hi:"Hello, new OZone order.",no:"Order no.",tot:"Items total",pay:"Payment",fees:"fees paid by me",nm:"Name",tel:"Phone",city:"City / area",end:"Please confirm availability and payment instructions."},
  msg:(t,id)=>"Hello, I am interested in: "+t+" (ref "+id+")",gen:"Hello, I would like information about your OZone products.",
  sort:{rec:"Recommended",pa:"Price: low to high",pd:"Price: high to low",az:"Name A to Z",za:"Name Z to A"},
  cats:{}}};
@@ -289,7 +379,7 @@ function paint(){
   $("h1").textContent=t.h1;$("sub").textContent=t.sub;$("f1").textContent=t.f1;$("f2").textContent=t.f2;$("f3").textContent=t.f3;
   $("hint").textContent=t.hint;$("l-instock").textContent=t.instock;$("l-bon").textContent=t.bon;
   $("q").placeholder=t.ph;$("qx").hidden=!$("q").value;$("foot").textContent=t.foot;
-  $("wa-top-t").textContent=t.wa;$("fab-t").textContent=t.ask;$("wa-top").href=$("fab").href=wa(t.gen);
+  $("cartb").setAttribute("aria-label",t.cart);$("wa-top-t").textContent=t.wa;$("fab-t").textContent=t.ask;$("wa-top").href=$("fab").href=wa(t.gen);
   $("d-close").setAttribute("aria-label",t.close);$("e-t").textContent=t.none;$("e-d").textContent=t.nonedesc;$("reset").textContent=t.reset;
   $("sort").innerHTML=Object.keys(t.sort).map(k=>`<option value="${k}"${k===sort?" selected":""}>${esc(t.sort[k])}</option>`).join("");
   $("l-fr").setAttribute("aria-pressed",lang==="fr");$("l-en").setAttribute("aria-pressed",lang==="en");
@@ -316,7 +406,8 @@ function fill(i){
   $("d-tag").className="tag"+(ok&&i.xaf==null?" rq":"");$("d-tag").innerHTML=tagHtml(i).replace(/^<span class="tag[^"]*">|<\/span>$/g,"");
   const s=$("d-stock");s.className="stock"+(ok?"":" no");s.textContent=ok?(i.qty!=null&&i.qty>0?t.qty(i.qty):""):t.gone;
   $("d-desc").textContent=desc(i);$("d-ref").textContent=t.ref+" "+i.id;
-  const g=$("d-go");g.className="go"+(ok?"":" off");g.href=ok?wa(t.msg(title(i),i.id)):"#";$("d-go-t").textContent=t.ask;
+  const buy=ok&&i.xaf!=null,ad=$("d-add");ad.hidden=!buy;ad.textContent=CART[i.id]?t.inc:t.add;
+  const g=$("d-go");g.className=(buy?"go2":"go")+(ok?"":" off");g.href=ok?wa(t.msg(title(i),i.id)):"#";$("d-go-t").textContent=t.ask;
   const ph=$("d-ph");ph.hidden=!ok;ph.textContent=t.photos;ph.href=wa(t.msgp(title(i),i.id));
 }
 function openItem(id){
@@ -342,9 +433,66 @@ $("instock").addEventListener("change",paint);$("bon").addEventListener("change"
 $("reset").addEventListener("click",()=>{$("q").value="";$("instock").checked=$("bon").checked=false;cat="all";sort="rec";paint()});
 ["fr","en"].forEach(k=>$("l-"+k).addEventListener("click",()=>{lang=k;try{localStorage.setItem("oz-lang",k)}catch(e){}paint()}));
 window.addEventListener("hashchange",()=>{const id=location.hash.slice(1);if(/^OZ-\d+$/.test(id))openItem(id)});
+
+/* cart */
+let CART={},ORDER=null;
+try{const o=JSON.parse(localStorage.getItem("oz-cart")||"{}");if(o&&typeof o==="object")CART=o}catch(e){}
+const saveCart=()=>{try{localStorage.setItem("oz-cart",JSON.stringify(CART))}catch(e){}};
+const buyable=i=>inStock(i)&&i.xaf!=null;
+const maxq=i=>Math.min(i.qty>0?i.qty:20,20);
+function cleanCart(){const m=ids(),o={};for(const k in CART){const i=m[k],n=Math.floor(Number(CART[k]));if(i&&buyable(i)&&n>0)o[k]=Math.min(n,maxq(i))}CART=o;saveCart()}
+const lines=()=>{const m=ids();return Object.keys(CART).map(k=>({i:m[k],n:CART[k]})).filter(l=>l.i)};
+const total=()=>lines().reduce((s,l)=>s+l.i.xaf*l.n,0);
+function badge(){const n=lines().reduce((a,l)=>a+l.n,0),b=$("cartn");b.hidden=!n;b.textContent=n}
+function setQty(id,n){const i=ids()[id];if(!i)return;n=Math.min(n,maxq(i));if(n<=0)delete CART[id];else CART[id]=n;saveCart();badge();ORDER=null;renderCart();if(cur)fill(cur)}
+function renderCart(){
+  const t=T(),L=lines(),has=L.length>0;
+  $("c-title").textContent=t.cart;$("c-close").setAttribute("aria-label",t.close);
+  $("c-empty").hidden=has||!!ORDER;$("c-empty").textContent=t.cempty;
+  $("c-main").hidden=!has||!!ORDER;$("c-done").hidden=!ORDER;
+  $("c-list").innerHTML=L.map(({i,n})=>`<li><div><div class="ct">${esc(title(i))}</div><div class="cr">${esc(t.ref)} ${esc(i.id)} · ${money(i.xaf)} ${t.xaf}</div>
+    <div class="qty"><button type="button" data-q="${esc(i.id)}" data-d="-1" aria-label="${esc(t.minus)}">&minus;</button><span>${n}</span><button type="button" data-q="${esc(i.id)}" data-d="1" aria-label="${esc(t.plus)}"${n>=maxq(i)?" disabled":""}>+</button></div></div>
+    <div class="cp">${money(i.xaf*n)} ${t.xaf}</div><button type="button" class="rm" data-q="${esc(i.id)}" data-d="-99">${esc(t.rmv)}</button></li>`).join("");
+  $("c-tl").textContent=t.sbt;$("c-tv").textContent=money(total())+" "+t.xaf;$("c-tn").textContent=t.subn;
+  $("c-nl").textContent=t.nm;$("c-pl").textContent=t.tel;$("c-cl").textContent=t.city;$("c-payl").textContent=t.payl;
+  const sel=(document.querySelector("#c-pay input:checked")||{}).value;
+  $("c-pay").innerHTML=Object.keys(t.pay).map(k=>`<label class="pay"><input type="radio" name="pay" value="${k}"${k===sel?" checked":""}>${esc(t.pay[k])}</label>`).join("");
+  payNote();$("c-submit").textContent=t.place;$("c-priv").textContent=t.priv;$("c-err").hidden=true;
+  if(ORDER){$("c-d1").textContent=t.d1;$("c-on").textContent=ORDER.no;$("c-d2").textContent=t.d2;$("c-send-t").textContent=t.send;$("c-send").href=wa(ORDER.msg);$("c-back").textContent=t.back}
+}
+function payNote(){const t=T(),k=(document.querySelector("#c-pay input:checked")||{}).value,n=$("c-paynote");n.hidden=!k;n.textContent=k?t.pnote[k]:""}
+function openCart(){renderCart();const d=$("cart");if(!d.open)d.showModal()}
+function orderNo(){
+  const d=new Date(),p=n=>String(n).padStart(2,"0"),al="23456789ABCDEFGHJKMNPQRSTUVWXYZ";
+  let r;try{r=crypto.getRandomValues(new Uint8Array(4))}catch(e){r=[0,0,0,0].map(()=>Math.random()*256)}
+  return "CMD-"+String(d.getFullYear()).slice(2)+p(d.getMonth()+1)+p(d.getDate())+"-"+Array.from(r,x=>al[Math.floor(x)%al.length]).join("");
+}
+function buildMsg(no,name,tel,city,pay){
+  const t=T(),m=t.m,L=lines(),fee=(pay==="om"||pay==="momo");
+  return [m.hi,m.no+" : "+no,""].concat(L.map(({i,n})=>"- "+i.id+" : "+title(i)+" x"+n+" = "+money(i.xaf*n)+" "+t.xaf),
+   ["",m.tot+" : "+money(total())+" "+t.xaf,m.pay+" : "+t.pay[pay]+(fee?" ("+m.fees+")":""),"",
+   m.nm+" : "+name,m.tel+" : "+tel,city?m.city+" : "+city:"","",m.end]).filter((x,k,a)=>!(x===""&&a[k-1]==="")).join("\n");
+}
+$("cartb").addEventListener("click",openCart);
+$("d-add").addEventListener("click",()=>{if(!cur)return;if(CART[cur.id]){shut();openCart();return}setQty(cur.id,1)});
+$("c-close").addEventListener("click",()=>$("cart").close());
+$("cart").addEventListener("click",e=>{if(e.target===$("cart"))$("cart").close()});
+$("c-list").addEventListener("click",e=>{const b=e.target.closest("button[data-q]");if(b)setQty(b.dataset.q,(CART[b.dataset.q]||0)+Number(b.dataset.d))});
+$("c-pay").addEventListener("change",payNote);
+$("c-back").addEventListener("click",()=>{ORDER=null;renderCart()});
+$("c-send").addEventListener("click",()=>{setTimeout(()=>{CART={};saveCart();badge();ORDER=null;try{$("cart").close()}catch(e){}if(cur)fill(cur)},400)});
+$("c-form").addEventListener("submit",e=>{
+  e.preventDefault();const t=T(),er=$("c-err");
+  const name=$("c-name").value.replace(/\s+/g," ").trim(),tel=$("c-tel").value.replace(/[^\d+ ()-]/g,"").trim(),city=$("c-city").value.replace(/\s+/g," ").trim();
+  const dg=tel.replace(/\D/g,""),pay=(document.querySelector("#c-pay input:checked")||{}).value;
+  const bad=name.length<2?[t.eN,"c-name"]:(dg.length<8||dg.length>15)?[t.eT,"c-tel"]:!pay?[t.eP,"c-pay"]:null;
+  if(bad){er.textContent=bad[0];er.hidden=false;const f=$(bad[1]);(f.focus?f:f.querySelector("input")).focus();return}
+  if(!lines().length)return;
+  const no=orderNo();ORDER={no,msg:buildMsg(no,name,tel,city,pay)};renderCart();
+});
 function start(data){
   if(!Array.isArray(data)||!data.length)return fail();
-  ITEMS=data;const n={};data.forEach(i=>{if(i.cat)n[i.cat]=(n[i.cat]||0)+1});
+  ITEMS=data;cleanCart();badge();const n={};data.forEach(i=>{if(i.cat)n[i.cat]=(n[i.cat]||0)+1});
   cats=Object.keys(n).sort((a,b)=>n[b]-n[a]);paint();
   const id=location.hash.slice(1);if(/^OZ-\d+$/.test(id))openItem(id);
 }
