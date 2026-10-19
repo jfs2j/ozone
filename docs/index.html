@@ -148,7 +148,9 @@ dialog[open]{animation:up .2s ease-out}
 .cartb svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .cartb b{position:absolute;top:-5px;right:-5px;min-width:19px;height:19px;padding:0 5px;border-radius:999px;background:var(--tag);color:var(--tag-ink);font-size:.72rem;font-weight:800;display:grid;place-items:center}
 .cartb b[hidden]{display:none}
-@media(max-width:430px){.wa-top span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.wa-top{padding:9px}.wa-top svg{width:20px;height:20px}}
+@media(max-width:430px){.bar{gap:6px}.right{gap:6px}.brand b{font-size:1.3rem}.brand svg{width:30px;height:30px}.lang button{padding:5px 9px}.wa-top{padding:9px 13px}}
+@media(max-width:380px){.brand b{font-size:1.15rem}.brand{gap:6px}.brand svg{width:26px;height:26px}.lang button{padding:4px 7px;font-size:.78rem}.cartb{width:34px;height:34px}.wa-top{padding:8px 11px;font-size:.82rem;gap:5px}.wa-top svg{width:15px;height:15px}}
+@media(max-width:335px){.brand b{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}}
 button.go,button.go2{width:100%;cursor:pointer;font-size:1rem}
 button.go{border:0}
 button.go2{background:none;color:var(--ink);font-size:.92rem}
@@ -246,8 +248,8 @@ button[hidden],.go[hidden]{display:none}
     <div class="dprice"><span class="tag" id="d-tag"></span><span class="stock" id="d-stock"></span></div>
     <p id="d-desc"></p>
     <div class="ref" id="d-ref"></div>
-    <button type="button" class="go" id="d-add" hidden></button>
     <a class="go" id="d-go" href="#" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3Zm0 2a7 7 0 1 1-3.6 13l-.3-.2-2.4.6.6-2.3-.2-.3A7 7 0 0 1 12 5Zm-2.3 3.2c-.2 0-.4.1-.6.3-.2.3-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.7 2.7 4.2 3.7 2 .8 2.5.6 3 .6.5-.1 1.4-.6 1.6-1.2.2-.6.2-1 .1-1.2-.1-.1-.2-.2-.5-.3l-1.6-.8c-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1-.2-.1-.9-.3-1.8-1.1-.6-.6-1.1-1.3-1.2-1.5-.1-.2 0-.3.1-.4l.4-.5.2-.4v-.4l-.7-1.7c-.2-.4-.3-.4-.5-.4Z"/></svg><span id="d-go-t"></span></a>
+    <button type="button" class="go2" id="d-add" hidden></button>
     <a class="go2" id="d-ph" href="#" target="_blank" rel="noopener noreferrer"></a>
   </div>
 </dialog>
@@ -407,7 +409,7 @@ function fill(i){
   const s=$("d-stock");s.className="stock"+(ok?"":" no");s.textContent=ok?(i.qty!=null&&i.qty>0?t.qty(i.qty):""):t.gone;
   $("d-desc").textContent=desc(i);$("d-ref").textContent=t.ref+" "+i.id;
   const buy=ok&&i.xaf!=null,ad=$("d-add");ad.hidden=!buy;ad.textContent=CART[i.id]?t.inc:t.add;
-  const g=$("d-go");g.className=(buy?"go2":"go")+(ok?"":" off");g.href=ok?wa(t.msg(title(i),i.id)):"#";$("d-go-t").textContent=t.ask;
+  const g=$("d-go");g.className="go"+(ok?"":" off");g.href=ok?wa(t.msg(title(i),i.id)):"#";$("d-go-t").textContent=t.ask;
   const ph=$("d-ph");ph.hidden=!ok;ph.textContent=t.photos;ph.href=wa(t.msgp(title(i),i.id));
 }
 function openItem(id){
